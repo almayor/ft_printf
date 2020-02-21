@@ -1,3 +1,0 @@
-objs/./print_specif/functions/print_specif_xx.o: \
-  srcs/./print_specif/functions/print_specif_xx.c \
-  srcs/ft_printf_private.h libft/libft.h

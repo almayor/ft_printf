@@ -11,10 +11,11 @@
 	* dispatch tables – loose coupling and performance
 	* void pointers – generic functions
 	* optimization patterns – buffering
-* The project is consistent with the [Norme](resources/norme.en.pdf), a code standard accepted at School 42. In particular, this means that
+* The project is consistent with the [Norme](resources/norme.en.pdf), a code standard accepted at *School 42*. In particular, this means that
 	* no comments inline or inside functions
 	* `for` loops and `switch` statements are forbidden
 	* each function must be maximum 25 lines
+* As per instructions, the project is realised using `libft` from a previous *School 42* project.
 
 ## Checklist
 

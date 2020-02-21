@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:00:33 by unite             #+#    #+#             */
-/*   Updated: 2020/02/21 17:05:02 by unite            ###   ########.fr       */
+/*   Updated: 2020/02/21 22:13:45 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,8 @@ int print_specif(t_specifier *specif, void *data)
 		['u'] = &print_specif_u,
 		['f'] = &print_specif_f,
 		['p'] = &print_specif_p,
-		['%'] = &print_specif_c
+		['%'] = &print_specif_c,
 		['b'] = &print_specif_b
-		['r'] = &print_specif_r
 	};
 
 	if (dispatch_table[specif->formatid])

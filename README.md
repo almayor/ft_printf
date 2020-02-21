@@ -28,10 +28,13 @@
 - [x] precision
 - [x] `*` flag management
 
-**_Non-existing flags_**
+**_Extra_**
 
 - [x] `b` conversion to print in binary
-- [x] `r` to print a string of non-printable characters
+- [x] variants of `printf`
+	* `ft_dprintf`
+	* `ft_vprintf`
+	* `ft_vdprintf`
 - [x] colors
 	* `printf("{red} Color-print.{eoc} Normal print.")`
 	* red, blue, yellow, green, cyan, magenta

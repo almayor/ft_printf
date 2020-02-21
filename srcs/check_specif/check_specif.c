@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:00:33 by unite             #+#    #+#             */
-/*   Updated: 2020/02/21 17:06:28 by unite            ###   ########.fr       */
+/*   Updated: 2020/02/21 22:14:23 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	check_specif_s(t_specifier *specif);
 int	check_specif_u(t_specifier *specif);
 int	check_specif_x(t_specifier *specif);
 int	check_specif_b(t_specifier *specif);
-int	check_specif_r(t_specifier *specif);
 
 int check_specif(t_specifier *specif)
 {
@@ -38,7 +37,6 @@ int check_specif(t_specifier *specif)
 		['p'] = &check_specif_p,
 		['%'] = &check_specif_c,
 		['b'] = &check_specif_b,
-		['r'] = &check_specif_r
 	};
 
 	if (dispatch_table[specif->formatid])

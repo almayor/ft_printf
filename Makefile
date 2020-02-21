@@ -6,13 +6,17 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/02/21 03:42:38 by unite            ###   ########.fr        #
+#    Updated: 2020/02/21 22:14:06 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-SRC_NAME = ./ft_printf.c
+SRC_NAME = \
+./ft_printf.c \
+./ft_dprintf.c \
+./ft_vprintf.c \
+./ft_vdprintf.c \
 
 SRC_NAME += \
 ./parse_specif/parse_specif.c
@@ -26,6 +30,7 @@ SRC_NAME += \
 ./check_specif/functions/check_specif_p.c \
 ./check_specif/functions/check_specif_f.c \
 ./check_specif/functions/check_specif_s.c \
+./check_specif/functions/check_specif_b.c \
 
 SRC_NAME += \
 ./fetch_data/fetch_data.c \
@@ -38,6 +43,7 @@ SRC_NAME += \
 ./fetch_data/functions/fetch_data_u.c \
 
 SRC_NAME += \
+./before_print/before_print.c \
 ./before_print/functions/before_print_f.c \
 ./before_print/functions/before_print_p.c \
 ./before_print/functions/before_print_o.c \
@@ -46,7 +52,7 @@ SRC_NAME += \
 ./before_print/functions/before_print_c.c \
 ./before_print/functions/before_print_i.c \
 ./before_print/functions/before_print_u.c \
-./before_print/before_print.c \
+./before_print/functions/before_print_b.c \
 
 SRC_NAME += \
 ./print_specif/print_specif.c \
@@ -59,6 +65,7 @@ SRC_NAME += \
 ./print_specif/functions/print_specif_f.c \
 ./print_specif/functions/print_specif_s.c \
 ./print_specif/functions/print_specif_o.c \
+./print_specif/functions/print_specif_b.c \
 
 SRC_NAME += \
 ./utils/buffered_nprint.c \
@@ -185,6 +192,10 @@ ft_toupper.c \
 get_next_line.c \
 get_next_line_untrim.c \
 
+TEST_NAME = test.out
+TESTSRC_NAME = main.c
+FRAMEWORKSRC_NAME = unity.c
+
 ################################################################################
 
 PATHS = srcs
@@ -193,6 +204,14 @@ PATHO = objs
 PATHFT = libft
 PATHFTS = libft/srcs
 PATHFTO = libft/objs
+
+PATHTEST = tests
+PATHTESTS = tests/srcs
+PATHTESTO = tests/objs
+
+PATHFRAMEWORK = tests/srcs/Unity
+PATHFRAMEWORKS = tests/srcs/Unity
+PATHFRAMEWORKO = tests/objs
 
 ################################################################################
 
@@ -203,8 +222,9 @@ LINK = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -I$(PATHS) -I$(PATHFT)
-CFLAGS += -O
+CFLAGS_OPTIMISE = -O
 CFLAGS_DEPEND = -MMD
+CFLAGS_TEST = -I$(PATHTEST) -I$(PATHFRAMEWORK)
 
 ################################################################################
 
@@ -220,7 +240,7 @@ $(NAME) : $(OBJ) $(FTOBJ)
 
 $(PATHO)/%.o : $(PATHS)/%.c
 	mkdir -p $(@D)
-	$(COMPILE) $(CFLAGS) $(CFLAGS_DEPEND) $< -o $@
+	$(COMPILE) $(CFLAGS) $(CFLAGS_DEPEND) $(CFLAGS_OPTIMISE) $< -o $@
 
 $(PATHFTO)/%.o : $(PATHFTS)/%.c
 	mkdir -p $(@D)
@@ -231,6 +251,25 @@ $(PATHFTO)/%.o : $(PATHFTS)/%.c
 DEP = $(patsubst %.c, $(PATHO)/%.d, $(SRC_NAME))
 
 -include $(DEP)
+
+################################################################################
+
+TESTSRC = $(patsubst %.c, $(PATHTESTS)/%.c, $(TESTSRC_NAME))
+TESTOBJ = $(patsubst %.c, $(PATHTESTO)/%.o, $(TESTSRC_NAME))
+
+FRAMEWORKSRC = $(patsubst %.c, $(PATHFRAMEWORKS)/%.c, $(FRAMEWORKSRC_NAME))
+FRAMEWORKOBJ = $(patsubst %.c, $(PATHFRAMEWORKO)/%.o, $(FRAMEWORKSRC_NAME))
+
+$(TEST_NAME) : $(NAME) $(TESTOBJ) $(FRAMEWORKOBJ)
+	$(LINK) $^ -o $@ -lftprintf -L . 
+
+$(PATHTESTO)/%.o : $(PATHTESTS)/%.c
+	mkdir -p $(@D)
+	$(COMPILE) $(CFLAGS) $(CFLAGS_TEST) $< -o $@ -I .
+
+$(PATHFRAMEWORKO)/%.o : $(PATHFRAMEWORKS)/%.c
+	mkdir -p $(@D)
+	$(COMPILE) $(CFLAGS) $(CFLAGS_TEST) $< -o $@
 
 ################################################################################
 
@@ -245,5 +284,9 @@ clean :
 	rm -rf $(PATHO) $(PATHFTO) $(PATHTESTO) $(TEST_NAME)
 
 re : fclean all
+
+test : $(NAME) $(TEST_NAME)
+	@echo "\n======BEGIN TESTS======\n"
+	@./test.out
 
 ################################################################################

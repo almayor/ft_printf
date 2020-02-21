@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 11:31:07 by unite             #+#    #+#             */
-/*   Updated: 2020/02/21 03:12:13 by unite            ###   ########.fr       */
+/*   Updated: 2020/02/21 21:41:43 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,30 @@ typedef struct	s_specifier
 	size_t				npad_width;
 }				t_specifier;
 
+int				ft_vprintf(const char *format, va_list ap);
+int				ft_vdprintf(int fd, const char *format, va_list ap);
+int				ft_printf(const char *format, ...);
+int				ft_dprintf(int fd, const char *format, ...);
+
+/* 
+** dispatchers
+*/
+
 int				parse_specif(t_specifier *specif, const char **format, va_list ap);
 int 			check_specif(t_specifier *specif);
 int 			fetch_data(t_specifier *specif, void **data, va_list ap);
 int 			before_print(t_specifier *specif, void *data);
 int 			print_specif(t_specifier *specif, void *data);
 
-/* utils */
+/*
+** utils
+*/
 
-size_t 			buffered_nprint(unsigned char c, size_t n, int flush, int cleanup);
+void			set_fd(int fd);
+int				get_fd(void);
+size_t 			buffered_nprint(char c, size_t n, int flush, int cleanup);
 size_t			buffered_sprint(char *str, int flush, int cleanup);
-size_t 			buffered_print(unsigned char c, int flush, int cleanup);
+size_t 			buffered_print(char c, int flush, int cleanup);
 size_t			get_ndigits_ll(long long num, size_t base_len);
 size_t			get_ndigits_ull(unsigned long long num, size_t base_len);
 int				print_digits_ll(long long num, char *radix);

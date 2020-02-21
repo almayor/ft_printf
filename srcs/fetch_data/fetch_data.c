@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:00:44 by unite             #+#    #+#             */
-/*   Updated: 2020/02/21 17:01:19 by unite            ###   ########.fr       */
+/*   Updated: 2020/02/21 22:13:22 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	fetch_data_p(t_specifier *specif, void **data, va_list ap);
 int	fetch_data_pc(t_specifier *specif, void **data, va_list ap);
 int	fetch_data_s(t_specifier *specif, void **data, va_list ap);
 int	fetch_data_u(t_specifier *specif, void **data, va_list ap);
-int	fetch_data_r(t_specifier *specif, void **data, va_list ap);
 
 int fetch_data(t_specifier *specif, void **data, va_list ap)
 {
@@ -37,7 +36,6 @@ int fetch_data(t_specifier *specif, void **data, va_list ap)
 		['p'] = &fetch_data_p,
 		['%'] = &fetch_data_pc,
 		['b'] = &fetch_data_i,
-		['r'] = &fetch_data_r
 	};
 
 	if (dispatch_table[specif->formatid])

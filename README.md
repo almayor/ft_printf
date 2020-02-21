@@ -44,7 +44,7 @@
 
 * Standard printf behaviour has been tested with [42FileChecker](https://github.com/jgigault/42FileChecker)
 * Non-existing flags are tested with [Unity](https://github.com/ThrowTheSwitch/Unity)
-	* `make tests`  
+	* `make test`  
 
 ---
 If you have any questions, please contact me on Github.

@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/02/22 00:25:32 by unite            ###   ########.fr        #
+#    Updated: 2020/02/22 20:07:12 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -235,12 +235,21 @@ LINK = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -I$(PATHI) -I$(PATHFTI)
-CFLAGS_OPTIMISE = -O
+CFLAGS_OPTIMISE = -O3 -std=gnu11 -ffast-math -march=native
 CFLAGS_DEPEND = -MMD
 
 CFLAGS_TESTEXTRA = -I$(PATHTESTEXTRAI) -I$(PATHFRAMEWORKI)
 CFLAGS_FRAMEWORK = -I$(PATHFRAMEWORKI)
 CFLAGS_TESTSPEED = -I$(PATHTESTSPEEDI)
+
+################################################################################
+
+TRUE = 1
+FALSE = 0
+
+ifeq ($(DEBUG), $(TRUE)) 
+	COMPILE += -g
+endif
 
 ################################################################################
 
@@ -260,7 +269,7 @@ $(PATHO)/%.o : $(PATHS)/%.c
 
 $(PATHFTO)/%.o : $(PATHFTS)/%.c
 	mkdir -p $(@D)
-	$(COMPILE) $(CFLAGS) $< -o $@
+	$(COMPILE) $(CFLAGS) $(CFLAGS_OPTIMISE) $< -o $@
 
 ################################################################################
 
@@ -277,7 +286,7 @@ FRAMEWORKSRC = $(patsubst %.c, $(PATHFRAMEWORKS)/%.c, $(FRAMEWORKSRC_NAME))
 FRAMEWORKOBJ = $(patsubst %.c, $(PATHFRAMEWORKO)/%.o, $(FRAMEWORKSRC_NAME))
 
 $(TESTEXTRA_NAME) : $(NAME) $(TESTEXTRAOBJ) $(FRAMEWORKOBJ)
-	$(LINK) $^ -o $@ 
+	$(LINK) $^ -o $@
 
 $(PATHTESTEXTRAO)/%.o : $(PATHTESTEXTRAS)/%.c
 	mkdir -p $(@D)
@@ -293,8 +302,7 @@ TESTSPEEDSRC = $(patsubst %.c, $(PATHTESTSPEEDS)/%.c, $(TESTSPEEDSRC_NAME))
 TESTSPEEDOBJ = $(patsubst %.c, $(PATHTESTSPEEDO)/%.o, $(TESTSPEEDSRC_NAME))
 
 $(TESTSPEED_NAME) : $(NAME) $(TESTSPEEDOBJ)
-	echo $(TESTSPEEDOBJ)
-	$(LINK) $^ -o $@ 
+	$(LINK) $^ -o $@
 
 $(PATHTESTSPEEDO)/%.o : $(PATHTESTSPEEDS)/%.c
 	mkdir -p $(@D)
@@ -318,10 +326,10 @@ re : fclean all
 
 test-extra : $(NAME) $(TESTEXTRA_NAME)
 	@echo "\n======BEGIN TESTS======\n"
-	@./test-extra.out
+	./$(TESTEXTRA_NAME)
 
 test-speed : $(NAME) $(TESTSPEED_NAME)
 	@echo "\n======BEGIN TESTS======\n"
-	@./test-speed.out 2>/dev/null
+	./$(TESTSPEED_NAME) 2>/dev/null
 
 ################################################################################

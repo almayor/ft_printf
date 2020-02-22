@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/04 22:43:07 by unite             #+#    #+#             */
-/*   Updated: 2020/02/21 00:42:44 by unite            ###   ########.fr       */
+/*   Updated: 2020/02/22 01:53:17 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	c1 = (unsigned char)c;
 	while (i < n)
 	{
-		if (s1[i] == c)
+		if (s1[i] == c1)
 			return (s1 + i);
 		i++;
 	}

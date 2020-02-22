@@ -9,7 +9,7 @@
 * The goal of this project is to practice the following concepts
 	* variadic functions
 	* dispatch tables – loose coupling and performance
-	* void pointers – generic functions
+	* void pointers – generic programming
 	* optimization patterns – buffering
 * The project is consistent with the [Norme](resources/norme.en.pdf), a code standard accepted at *School 42*. In particular, this means that
 	* no comments inline or inside functions

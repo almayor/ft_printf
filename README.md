@@ -15,7 +15,7 @@
 	* no comments inline or inside functions
 	* `for` loops and `switch` statements are forbidden
 	* each function must be maximum 25 lines
-* As per instructions, the project is realised using `libft` from a [previous](resources/libft.en.pdf) *School 42* project.
+* As per instructions, the project is realised using `libft` compiled during [previous](resources/libft.en.pdf) [projects](resources/get_next_line.en.pdf).
 
 ## Checklist
 

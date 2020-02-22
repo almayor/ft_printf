@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/02/21 21:58:54 by unite            ###   ########.fr       */
+/*   Updated: 2020/02/22 00:46:57 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 
 int specif_print(const char **format, va_list ap)
 {
-	void 		*data;
-	t_specifier	*specif;
-	int			rc;
+	static t_specifier	specif;
+	void 				*data;
+	int					rc;
 
 	data = 0;
-	if (!(specif = ft_memalloc(sizeof(t_specifier))) ||
-		parse_specif(specif, format, ap) ||
-		check_specif(specif) ||
-		fetch_data(specif, &data, ap) ||
-		before_print(specif, data) ||
-		print_specif(specif, data))
+	ft_memset(&specif, 0, sizeof(t_specifier));
+	if (parse_specif(&specif, format, ap) ||
+		check_specif(&specif) ||
+		fetch_data(&specif, &data, ap) ||
+		before_print(&specif, data) ||
+		print_specif(&specif, data))
 		rc = 1;
 	else
 		rc = 0;
-	if (specif)
-		free(specif);
 	if (data)
 		free(data);
 	return (rc);

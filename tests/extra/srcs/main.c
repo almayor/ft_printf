@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 17:33:51 by unite             #+#    #+#             */
-/*   Updated: 2020/02/21 22:14:42 by unite            ###   ########.fr       */
+/*   Updated: 2020/02/21 23:28:26 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 #include "unity.h"
 #include "ft_printf.h"
 
-void	test_output(int testid, const char *expected, const char *format, ...)
+void	test_output(const char *expected, const char *format, ...)
 {
 	static char	zero = 0;
 	char		buffer[100];
 	int 		pipefd[2];
 	va_list		ap;
-	char		*message;
 
 	va_start(ap, format);
 	pipe(pipefd);
@@ -29,8 +28,7 @@ void	test_output(int testid, const char *expected, const char *format, ...)
 	ft_vdprintf(pipefd[1], format, ap);
 	write(pipefd[1], &zero, 1);
 	read(pipefd[0], buffer, 100);
-	asprintf(&message, "test id: %d", testid);
-	TEST_ASSERT_EQUAL_STRING_MESSAGE(expected, buffer, message);
+	TEST_ASSERT_EQUAL_STRING_MESSAGE(expected, buffer, format);
 
 	close(pipefd[0]);
 	close(pipefd[1]);
@@ -49,19 +47,15 @@ void	tearDown(void)
 
 void	test_asterix(void)
 {
-	int testid = 1;
-
-	test_output(testid++, "|  1|", "|%*d|", 3, 1);
-	test_output(testid++, "|02|", "|%.*d|", 2, 2);
+	test_output("|  1|", "|%*d|", 3, 1);
+	test_output("|02|", "|%.*d|", 2, 2);
 }
 
 void	test_bflag(void)
 {
-	int testid = 1;
-
-	test_output(testid++, "|101|", "|%b|", 5);
-	test_output(testid++, "|-101|", "|%b|", -5);
-	test_output(testid++, "|0|", "|%b|", 0);
+	test_output("|101|", "|%b|", 5);
+	test_output("|-101|", "|%b|", -5);
+	test_output("|0|", "|%b|", 0);
 }
 
 int		main(void)

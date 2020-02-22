@@ -44,7 +44,9 @@
 
 * Standard printf behaviour has been tested with [42FileChecker](https://github.com/jgigault/42FileChecker)
 * Non-existing flags are tested with [Unity](https://github.com/ThrowTheSwitch/Unity)
-	* `make test`  
+	* `make test-extra`
+* The speed of `ft_printf` can be compared with `printf`
+	* `make test-speed` 
 
 ---
 If you have any questions, please contact me on Github.

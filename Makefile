@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/02/21 22:14:06 by unite            ###   ########.fr        #
+#    Updated: 2020/02/22 00:25:32 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -192,26 +192,39 @@ ft_toupper.c \
 get_next_line.c \
 get_next_line_untrim.c \
 
-TEST_NAME = test.out
-TESTSRC_NAME = main.c
-FRAMEWORKSRC_NAME = unity.c
+TESTEXTRA_NAME = test-extra.out
+TESTSPEED_NAME = test-speed.out
+
+TESTEXTRASRC_NAME = \
+main.c \
+
+TESTSPEEDSRC_NAME = \
+main.c \
+
+FRAMEWORKSRC_NAME = \
+Unity/unity.c
 
 ################################################################################
 
+PATHI = srcs
 PATHS = srcs
 PATHO = objs
 
-PATHFT = libft
+PATHFTI = libft
 PATHFTS = libft/srcs
 PATHFTO = libft/objs
 
-PATHTEST = tests
-PATHTESTS = tests/srcs
-PATHTESTO = tests/objs
+PATHTESTEXTRAI = tests/extra/srcs/Unity
+PATHTESTEXTRAS = tests/extra/srcs
+PATHTESTEXTRAO = tests/extra/objs
 
-PATHFRAMEWORK = tests/srcs/Unity
-PATHFRAMEWORKS = tests/srcs/Unity
-PATHFRAMEWORKO = tests/objs
+PATHFRAMEWORKI = tests/extra/srcs/Unity
+PATHFRAMEWORKS = tests/extra/srcs/Unity
+PATHFRAMEWORKO = tests/extra/objs
+
+PATHTESTSPEEDI = .
+PATHTESTSPEEDS = tests/speed/srcs
+PATHTESTSPEEDO = tests/speed/objs
 
 ################################################################################
 
@@ -221,10 +234,13 @@ INDEX = ranlib
 LINK = gcc
 
 CFLAGS = -Wall -Wextra -Werror
-CFLAGS += -I$(PATHS) -I$(PATHFT)
+CFLAGS += -I$(PATHI) -I$(PATHFTI)
 CFLAGS_OPTIMISE = -O
 CFLAGS_DEPEND = -MMD
-CFLAGS_TEST = -I$(PATHTEST) -I$(PATHFRAMEWORK)
+
+CFLAGS_TESTEXTRA = -I$(PATHTESTEXTRAI) -I$(PATHFRAMEWORKI)
+CFLAGS_FRAMEWORK = -I$(PATHFRAMEWORKI)
+CFLAGS_TESTSPEED = -I$(PATHTESTSPEEDI)
 
 ################################################################################
 
@@ -254,22 +270,35 @@ DEP = $(patsubst %.c, $(PATHO)/%.d, $(SRC_NAME))
 
 ################################################################################
 
-TESTSRC = $(patsubst %.c, $(PATHTESTS)/%.c, $(TESTSRC_NAME))
-TESTOBJ = $(patsubst %.c, $(PATHTESTO)/%.o, $(TESTSRC_NAME))
+TESTEXTRASRC = $(patsubst %.c, $(PATHTESTEXTRAS)/%.c, $(TESTEXTRASRC_NAME))
+TESTEXTRAOBJ = $(patsubst %.c, $(PATHTESTEXTRAO)/%.o, $(TESTEXTRASRC_NAME))
 
 FRAMEWORKSRC = $(patsubst %.c, $(PATHFRAMEWORKS)/%.c, $(FRAMEWORKSRC_NAME))
 FRAMEWORKOBJ = $(patsubst %.c, $(PATHFRAMEWORKO)/%.o, $(FRAMEWORKSRC_NAME))
 
-$(TEST_NAME) : $(NAME) $(TESTOBJ) $(FRAMEWORKOBJ)
-	$(LINK) $^ -o $@ -lftprintf -L . 
+$(TESTEXTRA_NAME) : $(NAME) $(TESTEXTRAOBJ) $(FRAMEWORKOBJ)
+	$(LINK) $^ -o $@ 
 
-$(PATHTESTO)/%.o : $(PATHTESTS)/%.c
+$(PATHTESTEXTRAO)/%.o : $(PATHTESTEXTRAS)/%.c
 	mkdir -p $(@D)
-	$(COMPILE) $(CFLAGS) $(CFLAGS_TEST) $< -o $@ -I .
+	$(COMPILE) $(CFLAGS_TESTEXTRA) $< -o $@ -I .
 
 $(PATHFRAMEWORKO)/%.o : $(PATHFRAMEWORKS)/%.c
 	mkdir -p $(@D)
-	$(COMPILE) $(CFLAGS) $(CFLAGS_TEST) $< -o $@
+	$(COMPILE) $(CFLAGS_FRAMEWORK) $< -o $@
+
+################################################################################
+
+TESTSPEEDSRC = $(patsubst %.c, $(PATHTESTSPEEDS)/%.c, $(TESTSPEEDSRC_NAME))
+TESTSPEEDOBJ = $(patsubst %.c, $(PATHTESTSPEEDO)/%.o, $(TESTSPEEDSRC_NAME))
+
+$(TESTSPEED_NAME) : $(NAME) $(TESTSPEEDOBJ)
+	echo $(TESTSPEEDOBJ)
+	$(LINK) $^ -o $@ 
+
+$(PATHTESTSPEEDO)/%.o : $(PATHTESTSPEEDS)/%.c
+	mkdir -p $(@D)
+	$(COMPILE) $(CFLAGS_TESTSPEED) $< -o $@ -I .
 
 ################################################################################
 
@@ -281,12 +310,18 @@ fclean : clean
 	rm -f $(NAME)
 
 clean :
-	rm -rf $(PATHO) $(PATHFTO) $(PATHTESTO) $(TEST_NAME)
+	rm -rf $(PATHO) $(PATHFTO)
+	rm -rf $(PATHTESTEXTRAO) $(TESTEXTRA_NAME)
+	rm -rf $(PATHTESTSPEEDO) $(TESTSPEED_NAME)
 
 re : fclean all
 
-test : $(NAME) $(TEST_NAME)
+test-extra : $(NAME) $(TESTEXTRA_NAME)
 	@echo "\n======BEGIN TESTS======\n"
-	@./test.out
+	@./test-extra.out
+
+test-speed : $(NAME) $(TESTSPEED_NAME)
+	@echo "\n======BEGIN TESTS======\n"
+	@./test-speed.out 2>/dev/null
 
 ################################################################################

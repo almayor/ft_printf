@@ -37,7 +37,7 @@
 	* `ft_vprintf`
 	* `ft_vdprintf`
 - [x] colors
-	* `printf("{red} Color-print.{eoc} Normal print.")`
+	* `ft_printf("{red} Color-print.{eoc} Normal print.")`
 	* red, blue, yellow, green, cyan, magenta
 
 ## Tests

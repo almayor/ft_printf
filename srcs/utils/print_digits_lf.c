@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 21:44:57 by unite             #+#    #+#             */
-/*   Updated: 2020/02/20 22:02:18 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/30 00:30:11 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int					print_digits_lf(long double num, char *radix,
 	long long	frc_part;
 	size_t		frc_ndigits;
 
-	factor = power_ll(10, precision);
+	factor = power_ll(ft_strlen(radix), precision);
 	if (num < 0)
 		num = num - 0.5 / factor;
 	else
@@ -38,14 +38,14 @@ int					print_digits_lf(long double num, char *radix,
 	int_part = (long long)num;
 	frc_part = (num - int_part) * factor;
 	print_digits_ll(int_part, radix);
-	if (frc_part != 0)
+	if (precision)
 	{
 		frc_ndigits = get_ndigits_ll(frc_part, ft_strlen(radix));
-		buffered_nprint('.', 1, 0, 0);
-		buffered_nprint('0', precision - frc_ndigits, 0, 0);
+		buffered_putchar('.');
+		buffered_putnchar('0', precision - frc_ndigits);
 		print_digits_ll(frc_part, radix);
 	}
 	else if (print_dot)
-		buffered_nprint('.', 1, 0, 0);
+		buffered_putchar('.');
 	return (0);
 }

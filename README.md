@@ -42,11 +42,14 @@
 
 ## Tests
 
-* Standard printf behaviour has been tested with [42FileChecker](https://github.com/jgigault/42FileChecker)
-* Non-existing flags are tested with [Unity](https://github.com/ThrowTheSwitch/Unity)
-	* `make test-extra`
-* The performance of `ft_printf` can be benchmarked against that of `printf`
+* Behaviour are tested with [Unity](https://github.com/ThrowTheSwitch/Unity)
+	* `make test-behavior`
+* Performance of `ft_printf` can be benchmarked against that of `printf`
 	* `make test-speed` 
+
+## Acknowledgements
+
+Many of the included tests are borrowed from [pft](https://github.com/gavinfielder/pft) by [gavinfielder](https://github.com/gavinfielder) and other contributors and [Moulitest](https://github.com/yyang42/moulitest) by [yyang42](https://github.com/yyang42) and other contributors. My thanks go to them.
 
 ---
 If you have any questions, please contact me on Github.

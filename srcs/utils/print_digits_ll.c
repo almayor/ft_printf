@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 22:44:49 by unite             #+#    #+#             */
-/*   Updated: 2020/02/21 01:45:52 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/17 07:22:35 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	print_digits_ll(long long num, char *radix)
 	while (factor >= 1)
 	{
 		if (num >= 0)
-			buffered_nprint(radix[num / factor], 1, 0, 0);
+			buffered_putchar(radix[num / factor]);
 		else
-			buffered_nprint(radix[-(num / factor)], 1, 0, 0);
+			buffered_putchar(radix[-(num / factor)]);
 		num %= factor;
 		factor /= base_len;
 	}

@@ -6,76 +6,76 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/02/22 20:07:12 by unite            ###   ########.fr        #
+#    Updated: 2020/03/30 14:45:20 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 SRC_NAME = \
-./ft_printf.c \
-./ft_dprintf.c \
-./ft_vprintf.c \
-./ft_vdprintf.c \
+ft_printf.c \
+ft_dprintf.c \
+ft_vprintf.c \
+ft_vdprintf.c \
 
 SRC_NAME += \
-./parse_specif/parse_specif.c
+parse_specifier/parse_specifier.c
 
 SRC_NAME += \
-./check_specif/check_specif.c \
-./check_specif/functions/check_specif_x.c \
-./check_specif/functions/check_specif_u.c \
-./check_specif/functions/check_specif_i.c \
-./check_specif/functions/check_specif_c.c \
-./check_specif/functions/check_specif_p.c \
-./check_specif/functions/check_specif_f.c \
-./check_specif/functions/check_specif_s.c \
-./check_specif/functions/check_specif_b.c \
+validate_specifier/validate_specifier.c \
+validate_specifier/functions/validate_specifier_b.c \
+validate_specifier/functions/validate_specifier_c.c \
+validate_specifier/functions/validate_specifier_f.c \
+validate_specifier/functions/validate_specifier_i.c \
+validate_specifier/functions/validate_specifier_p.c \
+validate_specifier/functions/validate_specifier_s.c \
+validate_specifier/functions/validate_specifier_u.c \
+validate_specifier/functions/validate_specifier_x.c \
 
 SRC_NAME += \
-./fetch_data/fetch_data.c \
-./fetch_data/functions/fetch_data_pc.c \
-./fetch_data/functions/fetch_data_s.c \
-./fetch_data/functions/fetch_data_f.c \
-./fetch_data/functions/fetch_data_p.c \
-./fetch_data/functions/fetch_data_c.c \
-./fetch_data/functions/fetch_data_i.c \
-./fetch_data/functions/fetch_data_u.c \
+fetch_data/fetch_data.c \
+fetch_data/functions/fetch_data_pc.c \
+fetch_data/functions/fetch_data_s.c \
+fetch_data/functions/fetch_data_f.c \
+fetch_data/functions/fetch_data_p.c \
+fetch_data/functions/fetch_data_c.c \
+fetch_data/functions/fetch_data_i.c \
+fetch_data/functions/fetch_data_u.c \
 
 SRC_NAME += \
-./before_print/before_print.c \
-./before_print/functions/before_print_f.c \
-./before_print/functions/before_print_p.c \
-./before_print/functions/before_print_o.c \
-./before_print/functions/before_print_s.c \
-./before_print/functions/before_print_x.c \
-./before_print/functions/before_print_c.c \
-./before_print/functions/before_print_i.c \
-./before_print/functions/before_print_u.c \
-./before_print/functions/before_print_b.c \
+complete_specifier/complete_specifier.c \
+complete_specifier/functions/complete_specifier_b.c \
+complete_specifier/functions/complete_specifier_c.c \
+complete_specifier/functions/complete_specifier_f.c \
+complete_specifier/functions/complete_specifier_i.c \
+complete_specifier/functions/complete_specifier_o.c \
+complete_specifier/functions/complete_specifier_p.c \
+complete_specifier/functions/complete_specifier_s.c \
+complete_specifier/functions/complete_specifier_u.c \
+complete_specifier/functions/complete_specifier_x.c \
 
 SRC_NAME += \
-./print_specif/print_specif.c \
-./print_specif/functions/print_specif_x.c \
-./print_specif/functions/print_specif_xx.c \
-./print_specif/functions/print_specif_u.c \
-./print_specif/functions/print_specif_i.c \
-./print_specif/functions/print_specif_c.c \
-./print_specif/functions/print_specif_p.c \
-./print_specif/functions/print_specif_f.c \
-./print_specif/functions/print_specif_s.c \
-./print_specif/functions/print_specif_o.c \
-./print_specif/functions/print_specif_b.c \
+print_data/print_data.c \
+print_data/functions/print_data_b.c \
+print_data/functions/print_data_c.c \
+print_data/functions/print_data_f.c \
+print_data/functions/print_data_i.c \
+print_data/functions/print_data_o.c \
+print_data/functions/print_data_p.c \
+print_data/functions/print_data_s.c \
+print_data/functions/print_data_u.c \
+print_data/functions/print_data_x.c \
+print_data/functions/print_data_xx.c \
 
 SRC_NAME += \
-./utils/buffered_nprint.c \
-./utils/buffered_sprint.c \
-./utils/buffered_print.c \
-./utils/print_digits_ull.c \
-./utils/get_ndigits_ll.c \
-./utils/get_ndigits_ull.c \
-./utils/print_digits_lf.c \
-./utils/print_digits_ll.c \
+utils/get_ndigits_ll.c \
+utils/get_ndigits_ull.c \
+utils/print_digits_lf.c \
+utils/print_digits_ll.c \
+utils/print_digits_ull.c \
+utils/printing/buffered_putchar.c \
+utils/printing/buffered_putnchar.c \
+utils/printing/buffered_puts.c \
 
 FTSRC_NAME = \
 ft_abs.c \
@@ -192,10 +192,10 @@ ft_toupper.c \
 get_next_line.c \
 get_next_line_untrim.c \
 
-TESTEXTRA_NAME = test-extra.out
-TESTSPEED_NAME = test-speed.out
+TESTBEHAV_NAME = test_behavior
+TESTSPEED_NAME = test_speed
 
-TESTEXTRASRC_NAME = \
+TESTBEHAVSRC_NAME = \
 main.c \
 
 TESTSPEEDSRC_NAME = \
@@ -214,13 +214,13 @@ PATHFTI = libft
 PATHFTS = libft/srcs
 PATHFTO = libft/objs
 
-PATHTESTEXTRAI = tests/extra/srcs/Unity
-PATHTESTEXTRAS = tests/extra/srcs
-PATHTESTEXTRAO = tests/extra/objs
+PATHTESTBEHAVI = tests/behavior/srcs/Unity
+PATHTESTBEHAVS = tests/behavior/srcs
+PATHTESTBEHAVO = tests/behavior/objs
 
-PATHFRAMEWORKI = tests/extra/srcs/Unity
-PATHFRAMEWORKS = tests/extra/srcs/Unity
-PATHFRAMEWORKO = tests/extra/objs
+PATHFRAMEWORKI = tests/behavior/srcs/Unity
+PATHFRAMEWORKS = tests/behavior/srcs/Unity
+PATHFRAMEWORKO = tests/behavior/objs
 
 PATHTESTSPEEDI = .
 PATHTESTSPEEDS = tests/speed/srcs
@@ -238,7 +238,7 @@ CFLAGS += -I$(PATHI) -I$(PATHFTI)
 CFLAGS_OPTIMISE = -O3 -std=gnu11 -ffast-math -march=native
 CFLAGS_DEPEND = -MMD
 
-CFLAGS_TESTEXTRA = -I$(PATHTESTEXTRAI) -I$(PATHFRAMEWORKI)
+CFLAGS_TESTBEHAV = -I$(PATHTESTBEHAVI) -I$(PATHFRAMEWORKI)
 CFLAGS_FRAMEWORK = -I$(PATHFRAMEWORKI)
 CFLAGS_TESTSPEED = -I$(PATHTESTSPEEDI)
 
@@ -279,18 +279,18 @@ DEP = $(patsubst %.c, $(PATHO)/%.d, $(SRC_NAME))
 
 ################################################################################
 
-TESTEXTRASRC = $(patsubst %.c, $(PATHTESTEXTRAS)/%.c, $(TESTEXTRASRC_NAME))
-TESTEXTRAOBJ = $(patsubst %.c, $(PATHTESTEXTRAO)/%.o, $(TESTEXTRASRC_NAME))
+TESTBEHAVSRC = $(patsubst %.c, $(PATHTESTBEHAVS)/%.c, $(TESTBEHAVSRC_NAME))
+TESTBEHAVOBJ = $(patsubst %.c, $(PATHTESTBEHAVO)/%.o, $(TESTBEHAVSRC_NAME))
 
 FRAMEWORKSRC = $(patsubst %.c, $(PATHFRAMEWORKS)/%.c, $(FRAMEWORKSRC_NAME))
 FRAMEWORKOBJ = $(patsubst %.c, $(PATHFRAMEWORKO)/%.o, $(FRAMEWORKSRC_NAME))
 
-$(TESTEXTRA_NAME) : $(NAME) $(TESTEXTRAOBJ) $(FRAMEWORKOBJ)
+$(TESTBEHAV_NAME) : $(NAME) $(TESTBEHAVOBJ) $(FRAMEWORKOBJ)
 	$(LINK) $^ -o $@
 
-$(PATHTESTEXTRAO)/%.o : $(PATHTESTEXTRAS)/%.c
+$(PATHTESTBEHAVO)/%.o : $(PATHTESTBEHAVS)/%.c
 	mkdir -p $(@D)
-	$(COMPILE) $(CFLAGS_TESTEXTRA) $< -o $@ -I .
+	$(COMPILE) $(CFLAGS_TESTBEHAV) $< -o $@ -I . -I $(PATHTESTBEHAVI) 
 
 $(PATHFRAMEWORKO)/%.o : $(PATHFRAMEWORKS)/%.c
 	mkdir -p $(@D)
@@ -319,14 +319,14 @@ fclean : clean
 
 clean :
 	rm -rf $(PATHO) $(PATHFTO)
-	rm -rf $(PATHTESTEXTRAO) $(TESTEXTRA_NAME)
+	rm -rf $(PATHTESTBEHAVO) $(PATHFRAMEWORKO) $(TESTBEHAV_NAME)
 	rm -rf $(PATHTESTSPEEDO) $(TESTSPEED_NAME)
 
 re : fclean all
 
-test-extra : $(NAME) $(TESTEXTRA_NAME)
+test-behavior : $(NAME) $(TESTBEHAV_NAME)
 	@echo "\n======BEGIN TESTS======\n"
-	./$(TESTEXTRA_NAME)
+	./$(TESTBEHAV_NAME) 2>/dev/null
 
 test-speed : $(NAME) $(TESTSPEED_NAME)
 	@echo "\n======BEGIN TESTS======\n"

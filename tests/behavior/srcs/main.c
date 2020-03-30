@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 17:33:51 by unite             #+#    #+#             */
-/*   Updated: 2020/03/30 15:48:04 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/30 16:14:33 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -334,7 +334,7 @@ void	test_asterix(void)
 	test_output("02", "%.*d", 2, 2);
 }
 
-void	test_bflag(void)
+void	test_b(void)
 {
 	test_output("101", "%b", 5);
 	test_output("-101", "%b", -5);
@@ -366,8 +366,8 @@ int		main(void)
 	RUN_TEST(test_s);
 	RUN_TEST(test_c);
 	RUN_TEST(test_f);
+	RUN_TEST(test_b);
 	RUN_TEST(test_asterix);
-	RUN_TEST(test_bflag);
 	RUN_TEST(test_colors);
 
 	return (UNITY_END());

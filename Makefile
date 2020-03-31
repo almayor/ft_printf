@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/03/30 14:45:20 by unite            ###   ########.fr        #
+#    Updated: 2020/03/31 17:53:16 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ print_data/functions/print_data_x.c \
 print_data/functions/print_data_xx.c \
 
 SRC_NAME += \
+utils/min.c \
 utils/get_ndigits_ll.c \
 utils/get_ndigits_ull.c \
 utils/print_digits_lf.c \

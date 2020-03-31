@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 20:30:59 by unite             #+#    #+#             */
-/*   Updated: 2020/03/29 16:43:37 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/31 17:35:44 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ static size_t	get_nchars(t_specifier *specif, size_t strlen)
 		return (strlen);
 }
 
-int	print_data_s(t_specifier *specif, void *data)
-{	
+int				print_data_s(t_specifier *specif, void *data)
+{
 	char	*str;
 	size_t	nchars;
 	size_t	i;
@@ -30,7 +30,7 @@ int	print_data_s(t_specifier *specif, void *data)
 	str = *(char **)data;
 	nchars = get_nchars(specif, ft_strlen(str));
 	if (specif->minus)
-	{	
+	{
 		i = 0;
 		while (i < nchars)
 			buffered_putchar(str[i++]);

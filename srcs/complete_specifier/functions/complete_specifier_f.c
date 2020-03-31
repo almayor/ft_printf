@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 20:02:50 by unite             #+#    #+#             */
-/*   Updated: 2020/03/30 00:18:16 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/31 17:51:02 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,18 +24,18 @@ static int	get_npad_width(t_specifier *specif, long double num)
 	sign = num < 0 || specif->space || specif->plus;
 	dot = (specif->precision.value > 0) || (specif->hash);
 	nchar = sign + get_ndigits_ll(num, 10) + dot + specif->precision.value;
-	specif->npad_width = specif->width.value - MIN(specif->width.value, nchar);
+	specif->npad_width = specif->width.value - min(specif->width.value, nchar);
 	return (0);
 }
 
 static int	get_npad_width_special(t_specifier *specif, long double num)
 {
 	if (isnan(num))
-		specif->npad_width = specif->width.value - MIN(specif->width.value, 5);
+		specif->npad_width = specif->width.value - min(specif->width.value, 5);
 	else if (!isfinite(num) && num > 0)
-		specif->npad_width = specif->width.value - MIN(specif->width.value, 5);
+		specif->npad_width = specif->width.value - min(specif->width.value, 5);
 	else if (!isfinite(num) && num < 0)
-		specif->npad_width = specif->width.value - MIN(specif->width.value, 6);
+		specif->npad_width = specif->width.value - min(specif->width.value, 6);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 16:45:00 by unite             #+#    #+#             */
-/*   Updated: 2020/03/29 19:12:31 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/31 17:27:11 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,9 @@ int	validate_specifier_u(t_specifier *specif);
 int	validate_specifier_x(t_specifier *specif);
 int	validate_specifier_b(t_specifier *specif);
 
-int validate_specifier(t_specifier *specif)
+int	validate_specifier(t_specifier *specif)
 {
-	static int	(* const dispatch_table[128])(t_specifier *) =
-	{
+	static int	(*const dispatch_table[128])(t_specifier *) = {
 		['c'] = &validate_specifier_c,
 		['s'] = &validate_specifier_s,
 		['i'] = &validate_specifier_i,

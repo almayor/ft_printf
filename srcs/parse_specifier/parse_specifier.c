@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 22:02:40 by unite             #+#    #+#             */
-/*   Updated: 2020/03/29 16:44:29 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/31 17:32:46 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	parse_width(t_specifier *specif, const char **format, va_list ap)
 		*format += 1;
 	}
 	else if (ft_isdigit(**format))
-	{	
+	{
 		specif->width.isgiven = 1;
 		specif->width.value = ft_atoi(*format);
 		while (ft_isdigit(**format))
@@ -48,14 +48,15 @@ static void	parse_width(t_specifier *specif, const char **format, va_list ap)
 	}
 }
 
-static void	parse_precision(t_specifier *specif, const char **format, va_list ap)
+static void	parse_precision(t_specifier *specif, const char **format,
+							va_list ap)
 {
 	if (**format != '.')
 		return ;
 	specif->precision.isgiven = 1;
 	*format += 1;
 	if (**format == '*')
-	{	
+	{
 		specif->precision.value = (va_arg(ap, int));
 		*format += 1;
 	}
@@ -92,7 +93,8 @@ static void	parse_length(t_specifier *specif, const char **format, va_list ap)
 		*format += 2;
 }
 
-int			parse_specifier(t_specifier *specif, const char **format, va_list ap)
+int			parse_specifier(t_specifier *specif, const char **format,
+							va_list ap)
 {
 	*format += 1;
 	parse_flags(specif, format, ap);

@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 20:30:59 by unite             #+#    #+#             */
-/*   Updated: 2020/03/30 01:19:20 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/31 17:35:10 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static int	print_right_aligned(t_specifier *specif, void *data)
 }
 
 int			print_data_o(t_specifier *specif, void *data)
-{	
+{
 	if (specif->minus)
 		print_left_aligned(specif, data);
 	else

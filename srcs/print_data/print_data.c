@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:00:33 by unite             #+#    #+#             */
-/*   Updated: 2020/03/29 19:13:09 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/31 17:33:41 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,9 @@ int	print_data_x(t_specifier *specif, void *data);
 int	print_data_xx(t_specifier *specif, void *data);
 int	print_data_b(t_specifier *specif, void *data);
 
-int print_data(t_specifier *specif, void *data)
+int	print_data(t_specifier *specif, void *data)
 {
-	static int 		(* const dispatch_table[128])(t_specifier *, void *) =
-	{
+	static int		(*const dispatch_table[128])(t_specifier *, void *) = {
 		['c'] = &print_data_c,
 		['s'] = &print_data_s,
 		['i'] = &print_data_i,

@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:17:51 by unite             #+#    #+#             */
-/*   Updated: 2020/03/30 01:25:52 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/31 17:50:50 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	complete_specifier_i(t_specifier *specif, void *data)
 	specif->npad_width = 0;
 	if (specif->precision.isgiven)
 		specif->npad_precision = specif->precision.value -
-			MIN(specif->precision.value, ndigits);
+			min(specif->precision.value, ndigits);
 	if (specif->width.isgiven)
 		specif->npad_width = specif->width.value -
-			MIN(specif->width.value, specif->npad_precision + ndigits + sign);
+			min(specif->width.value, specif->npad_precision + ndigits + sign);
 	return (0);
 }

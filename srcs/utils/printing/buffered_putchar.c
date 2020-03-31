@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 19:02:14 by unite             #+#    #+#             */
-/*   Updated: 2020/03/29 19:19:17 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/31 17:36:25 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ size_t		flush_buffer(void)
 	return (g_nprinted);
 }
 
-size_t 		buffered_putchar(char c)
+size_t		buffered_putchar(char c)
 {
 	if (g_buffer.inbuffer == BUFFER_SIZE)
 	{

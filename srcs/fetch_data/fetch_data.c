@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:00:44 by unite             #+#    #+#             */
-/*   Updated: 2020/03/29 19:12:52 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/31 17:31:37 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,9 @@ int	fetch_data_pc(t_specifier *specif, void **data, va_list ap);
 int	fetch_data_s(t_specifier *specif, void **data, va_list ap);
 int	fetch_data_u(t_specifier *specif, void **data, va_list ap);
 
-int fetch_data(t_specifier *specif, void **data, va_list ap)
+int	fetch_data(t_specifier *specif, void **data, va_list ap)
 {
-	static int (* const dispatch_table[128])(t_specifier *, void **, va_list) =
-	{
+	static int (*const dispatch_table[128])(t_specifier *, void **, va_list) = {
 		['c'] = &fetch_data_c,
 		['s'] = &fetch_data_s,
 		['i'] = &fetch_data_i,

@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 11:31:07 by unite             #+#    #+#             */
-/*   Updated: 2020/03/30 00:01:50 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/31 17:51:32 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,6 @@
 # define KBLU  "\x1B[34m"
 # define KMAG  "\x1B[35m"
 # define KCYN  "\x1B[36m"
-
-# define MAX(A, B)	(A < B ? B : A)
-# define MIN(A, B)	(A < B ? A : B)
 
 typedef struct	s_buffer
 {
@@ -70,29 +67,31 @@ int				ft_vdprintf(int fd, const char *format, va_list ap);
 int				ft_printf(const char *format, ...);
 int				ft_dprintf(int fd, const char *format, ...);
 
-/* 
+/*
 ** dispatchers
 */
 
-int				parse_specifier(t_specifier *specif, const char **format, va_list ap);
-int 			validate_specifier(t_specifier *specif);
-int 			fetch_data(t_specifier *specif, void **data, va_list ap);
-int 			complete_specifier(t_specifier *specif, void *data);
-int 			print_data(t_specifier *specif, void *data);
+int				parse_specifier(t_specifier *specif, const char **format,
+								va_list ap);
+int				validate_specifier(t_specifier *specif);
+int				fetch_data(t_specifier *specif, void **data, va_list ap);
+int				complete_specifier(t_specifier *specif, void *data);
+int				print_data(t_specifier *specif, void *data);
 
 /*
 ** utils
 */
 
-size_t 			buffered_putchar(char c);
+size_t			buffered_putchar(char c);
 size_t			buffered_puts(const char *str);
-size_t 			buffered_putnchar(char c, size_t n);
+size_t			buffered_putnchar(char c, size_t n);
 
 void			set_fd(int fd);
 int				get_fd(void);
 void			cleanup_buffer(void);
 size_t			flush_buffer(void);
 
+size_t			min(size_t a, size_t b);
 size_t			get_ndigits_ll(long long num, size_t base_len);
 size_t			get_ndigits_ull(unsigned long long num, size_t base_len);
 int				print_digits_ll(long long num, char *radix);

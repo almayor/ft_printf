@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:00:33 by unite             #+#    #+#             */
-/*   Updated: 2020/03/29 19:12:40 by unite            ###   ########.fr       */
+/*   Updated: 2020/03/31 17:30:51 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,9 @@ int	complete_specifier_u(t_specifier *specif, void *data);
 int	complete_specifier_x(t_specifier *specif, void *data);
 int	complete_specifier_b(t_specifier *specif, void *data);
 
-int complete_specifier(t_specifier *specif, void *data)
+int	complete_specifier(t_specifier *specif, void *data)
 {
-	static int 		(* const dispatch_table[128])(t_specifier *, void *) =
-	{
+	static int	(*const dispatch_table[128])(t_specifier *, void *) = {
 		['c'] = &complete_specifier_c,
 		['s'] = &complete_specifier_s,
 		['i'] = &complete_specifier_i,

@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/03/31 17:39:42 by unite            ###   ########.fr       */
+/*   Updated: 2020/04/04 04:34:48 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,13 @@ static int	formatted_print(const char **format, va_list ap)
 	void				*data;
 	int					rc;
 
-	data = 0;
 	ft_memset(&specif, 0, sizeof(t_specifier));
 	rc = (parse_specifier(&specif, format, ap) ||
 		validate_specifier(&specif) ||
 		fetch_data(&specif, &data, ap) ||
 		complete_specifier(&specif, data) ||
 		print_data(&specif, data));
-	if (data)
-		free(data);
+	free(data);
 	return (rc);
 }
 

@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/10 21:05:34 by unite            ###   ########.fr        #
+#    Updated: 2020/05/10 21:17:09 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -124,7 +124,7 @@ CFLAGS_TESTSPEED = -I$(PATHTESTSPEEDI)
 
 ################################################################################
 
-ifdef DEBUG
+ifeq ($(DEBUG), 1)
 	COMPILE += -g
 endif
 
@@ -134,7 +134,7 @@ SRC = $(patsubst %.c, $(PATHS)/%.c, $(SRC_NAME))
 OBJ = $(patsubst %.c, $(PATHO)/%.o, $(SRC_NAME))
 
 
-$(NAME) : $(OBJ) libft
+$(NAME) : $(OBJ) $(PATHFT)/libft.a
 	cp $(PATHFTA) $(NAME)
 	$(ARCHIVE) $(NAME) $(OBJ)
 	$(INDEX) $(NAME)
@@ -193,7 +193,7 @@ test-speed : $(NAME) $(TESTSPEED_NAME)
 	@echo "\n======BEGIN TESTS======\n"
 	./$(TESTSPEED_NAME) 2>/dev/null
 
-libft :
+$(PATHFT)/libft.a :
 	make -C $(PATHFT)
 
 ################################################################################

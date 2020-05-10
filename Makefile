@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/10 20:43:58 by unite            ###   ########.fr        #
+#    Updated: 2020/05/10 20:54:46 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,7 @@ PATHS = srcs
 PATHO = objs
 
 PATHFT = libft
-PATHFTA = $(libft)/libft.a
+PATHFTA = $(PATHFT)/libft.a
 
 PATHTESTBEHAVI = tests/behavior/srcs/Unity
 PATHTESTBEHAVS = tests/behavior/srcs

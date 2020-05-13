@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:00:33 by unite             #+#    #+#             */
-/*   Updated: 2020/03/31 17:30:51 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/13 19:00:59 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,5 @@ int	complete_specifier(t_specifier *specif, void *data)
 	if (dispatch_table[specif->formatid])
 		return (dispatch_table[specif->formatid](specif, data));
 	else
-		return (1);
+		return ((errno = ENOTSUP));
 }

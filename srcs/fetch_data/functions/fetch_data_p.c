@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 19:17:43 by unite             #+#    #+#             */
-/*   Updated: 2020/02/20 18:12:46 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/13 18:47:18 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	fetch_data_p(t_specifier *specif, void **data, va_list ap)
 {
 	(void)specif;
 	if (!(*data = malloc(sizeof(unsigned long long))))
-		return (1);
+		return ((errno = ENOMEM));
 	*(unsigned long long *)*data = va_arg(ap, unsigned long long);
 	return (0);
 }

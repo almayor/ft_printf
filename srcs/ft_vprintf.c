@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/05/10 20:53:42 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/13 19:13:30 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,17 @@ static int	formatted_print(const char **format, va_list ap)
 {
 	static t_specifier	specif;
 	void				*data;
-	int					rc;
 
 	data = NULL;
 	ft_memset(&specif, 0, sizeof(t_specifier));
-	rc = (parse_specifier(&specif, format, ap) ||
-		validate_specifier(&specif) ||
-		fetch_data(&specif, &data, ap) ||
-		complete_specifier(&specif, data) ||
-		print_data(&specif, data));
+	(parse_specifier(&specif, format, ap) ||
+	validate_specifier(&specif) ||
+	fetch_data(&specif, &data, ap) ||
+	complete_specifier(&specif, data) ||
+	print_data(&specif, data));
 	if (data)
 		free(data);
-	return (rc);
+	return (errno);
 }
 
 static int	colors_print(const char **format, va_list ap)
@@ -48,18 +47,18 @@ static int	colors_print(const char **format, va_list ap)
 	else if (ft_strnequ(*format, "{magenta}", 9))
 		buffered_puts(KMAG);
 	else
-		return (1);
+		return ((errno = ENOTSUP));
 	while (**format != '}')
 		*format += 1;
 	*format += 1;
-	return (0);
+	return (errno);
 }
 
 static int	simple_print(const char **format)
 {
 	buffered_putchar(**format);
 	*format += 1;
-	return (0);
+	return (errno);
 }
 
 int			ft_vprintf(const char *format, va_list ap)
@@ -74,9 +73,10 @@ int			ft_vprintf(const char *format, va_list ap)
 	{
 		if (*format < 0 || !dispatch_table[(unsigned char)*format])
 			simple_print(&format);
-		else if (dispatch_table[(unsigned char)*format](&format, ap))
+		else
+			dispatch_table[(unsigned char)*format](&format, ap);
+		if (errno)
 		{
-			write(2, "(error)\n", 8);
 			cleanup_buffer();
 			return (-1);
 		}

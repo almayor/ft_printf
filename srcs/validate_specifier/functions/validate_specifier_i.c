@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_specif_i.c                                   :+:      :+:    :+:   */
+/*   validate_specifier_i.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 16:45:15 by unite             #+#    #+#             */
-/*   Updated: 2020/03/29 16:46:44 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/13 18:55:49 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int	validate_specifier_i(t_specifier *specif)
 	if (specif->plus && specif->space)
 		specif->space = 0;
 	if (specif->hash)
-		return (1);
+		return ((errno = EINVAL));
 	if (specif->zero && specif->minus && specif->width.isgiven)
 		specif->zero = 0;
 	if (specif->zero && specif->precision.isgiven)
 		specif->zero = 0;
 	if (specif->length == L)
-		return (1);
+		return ((errno = EINVAL));
 	return (0);
 }

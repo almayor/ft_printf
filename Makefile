@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/10 21:17:09 by unite            ###   ########.fr        #
+#    Updated: 2020/05/10 21:19:47 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -169,7 +169,7 @@ $(PATHTESTSPEEDO)/%.o : $(PATHTESTSPEEDS)/%.c
 
 ################################################################################
 
-.PHONY : all clean fclean re test libft
+.PHONY : all clean fclean re test
 
 all : $(NAME)
 

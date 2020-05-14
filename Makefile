@@ -6,14 +6,14 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/10 21:19:47 by unite            ###   ########.fr        #
+#    Updated: 2020/05/14 19:58:29 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-TESTBEHAV_NAME = test_behavior
-TESTSPEED_NAME = test_speed
+TESTFUNC_NAME = test_functional
+TESTPERF_NAME = test_performance
 
 ################################################################################
 
@@ -83,29 +83,29 @@ utils/printing/buffered_putchar.c \
 utils/printing/buffered_putnchar.c \
 utils/printing/buffered_puts.c \
 
-TESTBEHAVSRC_NAME = \
+TESTFUNCSRC_NAME = \
 main.c \
 Unity/unity.c \
 
-TESTSPEEDSRC_NAME = \
+TESTPERFSRC_NAME = \
 main.c \
 
 ################################################################################
 
-PATHI = srcs
-PATHS = srcs
-PATHO = objs
+PATHI = src
+PATHS = src
+PATHO = obj
 
 PATHFT = libft
 PATHFTA = $(PATHFT)/libft.a
 
-PATHTESTBEHAVI = tests/behavior/srcs/Unity
-PATHTESTBEHAVS = tests/behavior/srcs
-PATHTESTBEHAVO = tests/behavior/objs
+PATHTESTFUNCI = test/functional/src/Unity
+PATHTESTFUNCS = test/functional/src
+PATHTESTFUNCO = test/functional/obj
 
-PATHTESTSPEEDI = 
-PATHTESTSPEEDS = tests/speed/srcs
-PATHTESTSPEEDO = tests/speed/objs
+PATHTESTPERFI = 
+PATHTESTPERFS = test/performance/src
+PATHTESTPERFO = test/performance/obj
 
 ################################################################################
 
@@ -119,8 +119,8 @@ CFLAGS += -I$(PATHI) -I$(PATHFT)
 CFLAGS_OPTIMISE = -O3 -std=gnu11 -ffast-math -march=native
 CFLAGS_DEPEND = -MMD
 
-CFLAGS_TESTBEHAV = -I$(PATHTESTBEHAVI)
-CFLAGS_TESTSPEED = -I$(PATHTESTSPEEDI)
+CFLAGS_TESTFUNC = -I$(PATHTESTFUNCI)
+CFLAGS_TESTPERF = -I$(PATHTESTPERFI)
 
 ################################################################################
 
@@ -145,31 +145,31 @@ $(PATHO)/%.o : $(PATHS)/%.c
 
 ################################################################################
 
-TESTBEHAVSRC = $(patsubst %.c, $(PATHTESTBEHAVS)/%.c, $(TESTBEHAVSRC_NAME))
-TESTBEHAVOBJ = $(patsubst %.c, $(PATHTESTBEHAVO)/%.o, $(TESTBEHAVSRC_NAME))
+TESTFUNCSRC = $(patsubst %.c, $(PATHTESTFUNCS)/%.c, $(TESTFUNCSRC_NAME))
+TESTFUNCOBJ = $(patsubst %.c, $(PATHTESTFUNCO)/%.o, $(TESTFUNCSRC_NAME))
 
-$(TESTBEHAV_NAME) : $(NAME) $(TESTBEHAVOBJ)
+$(TESTFUNC_NAME) : $(NAME) $(TESTFUNCOBJ)
 	$(LINK) $^ -o $@
 
-$(PATHTESTBEHAVO)/%.o : $(PATHTESTBEHAVS)/%.c
+$(PATHTESTFUNCO)/%.o : $(PATHTESTFUNCS)/%.c
 	mkdir -p $(@D)
-	$(COMPILE) $(CFLAGS_TESTBEHAV) $< -o $@ -I . -I $(PATHTESTBEHAVI) 
+	$(COMPILE) $< -o $@ -I . -I $(PATHTESTFUNCI) $(CFLAGS_TESTFUNC)
 
 ################################################################################
 
-TESTSPEEDSRC = $(patsubst %.c, $(PATHTESTSPEEDS)/%.c, $(TESTSPEEDSRC_NAME))
-TESTSPEEDOBJ = $(patsubst %.c, $(PATHTESTSPEEDO)/%.o, $(TESTSPEEDSRC_NAME))
+TESTPERFSRC = $(patsubst %.c, $(PATHTESTPERFS)/%.c, $(TESTPERFSRC_NAME))
+TESTPERFOBJ = $(patsubst %.c, $(PATHTESTPERFO)/%.o, $(TESTPERFSRC_NAME))
 
-$(TESTSPEED_NAME) : $(NAME) $(TESTSPEEDOBJ)
+$(TESTPERF_NAME) : $(NAME) $(TESTPERFOBJ)
 	$(LINK) $^ -o $@
 
-$(PATHTESTSPEEDO)/%.o : $(PATHTESTSPEEDS)/%.c
+$(PATHTESTPERFO)/%.o : $(PATHTESTPERFS)/%.c
 	mkdir -p $(@D)
-	$(COMPILE) $(CFLAGS_TESTSPEED) $< -o $@ -I .
+	$(COMPILE) $< -o $@ -I . $(CFLAGS_TESTPERF)
 
 ################################################################################
 
-.PHONY : all clean fclean re test
+.PHONY : all clean fclean re test-functional test-performance test
 
 all : $(NAME)
 
@@ -179,19 +179,21 @@ fclean : clean
 
 clean :
 	rm -rf $(PATHO)
-	rm -rf $(PATHTESTBEHAVO) $(TESTBEHAV_NAME)
-	rm -rf $(PATHTESTSPEEDO) $(TESTSPEED_NAME)
+	rm -rf $(PATHTESTFUNCO) $(TESTFUNC_NAME)
+	rm -rf $(PATHTESTPERFO) $(TESTPERF_NAME)
 	make -C $(PATHFT) clean
 
 re : fclean all
 
-test-behavior : $(NAME) $(TESTBEHAV_NAME)
-	@echo "\n======BEGIN TESTS======\n"
-	./$(TESTBEHAV_NAME) 2>/dev/null
+test : test-functional test-performance
 
-test-speed : $(NAME) $(TESTSPEED_NAME)
-	@echo "\n======BEGIN TESTS======\n"
-	./$(TESTSPEED_NAME) 2>/dev/null
+test-functional : $(NAME) $(TESTFUNC_NAME)
+	@echo "\n========= FUNCTIONAL TESTS =========\n"
+	./$(TESTFUNC_NAME) 2>/dev/null
+
+test-performance : $(NAME) $(TESTPERF_NAME)
+	@echo "\n========= PERFORMANCE TESTS =========\n"
+	./$(TESTPERF_NAME) 2>/dev/null
 
 $(PATHFT)/libft.a :
 	make -C $(PATHFT)

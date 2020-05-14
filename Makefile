@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/14 19:58:29 by unite            ###   ########.fr        #
+#    Updated: 2020/05/14 20:27:20 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -99,13 +99,15 @@ PATHO = obj
 PATHFT = libft
 PATHFTA = $(PATHFT)/libft.a
 
-PATHTESTFUNCI = test/functional/src/Unity
-PATHTESTFUNCS = test/functional/src
-PATHTESTFUNCO = test/functional/obj
+PATHTESTFUNC = test/functional
+PATHTESTFUNCI = $(PATHTESTFUNC)/src/Unity
+PATHTESTFUNCS = $(PATHTESTFUNC)/src
+PATHTESTFUNCO = $(PATHTESTFUNC)/obj
 
+PATHTESTPERF = test/performance
 PATHTESTPERFI = 
-PATHTESTPERFS = test/performance/src
-PATHTESTPERFO = test/performance/obj
+PATHTESTPERFS = $(PATHTESTPERF)/src
+PATHTESTPERFO = $(PATHTESTPERF)/obj
 
 ################################################################################
 
@@ -148,7 +150,7 @@ $(PATHO)/%.o : $(PATHS)/%.c
 TESTFUNCSRC = $(patsubst %.c, $(PATHTESTFUNCS)/%.c, $(TESTFUNCSRC_NAME))
 TESTFUNCOBJ = $(patsubst %.c, $(PATHTESTFUNCO)/%.o, $(TESTFUNCSRC_NAME))
 
-$(TESTFUNC_NAME) : $(NAME) $(TESTFUNCOBJ)
+$(PATHTESTFUNC)/$(TESTFUNC_NAME) : $(NAME) $(TESTFUNCOBJ)
 	$(LINK) $^ -o $@
 
 $(PATHTESTFUNCO)/%.o : $(PATHTESTFUNCS)/%.c
@@ -160,7 +162,7 @@ $(PATHTESTFUNCO)/%.o : $(PATHTESTFUNCS)/%.c
 TESTPERFSRC = $(patsubst %.c, $(PATHTESTPERFS)/%.c, $(TESTPERFSRC_NAME))
 TESTPERFOBJ = $(patsubst %.c, $(PATHTESTPERFO)/%.o, $(TESTPERFSRC_NAME))
 
-$(TESTPERF_NAME) : $(NAME) $(TESTPERFOBJ)
+$(PATHTESTPERF)/$(TESTPERF_NAME) : $(NAME) $(TESTPERFOBJ)
 	$(LINK) $^ -o $@
 
 $(PATHTESTPERFO)/%.o : $(PATHTESTPERFS)/%.c
@@ -169,7 +171,7 @@ $(PATHTESTPERFO)/%.o : $(PATHTESTPERFS)/%.c
 
 ################################################################################
 
-.PHONY : all clean fclean re test-functional test-performance test
+.PHONY : all clean fclean re test-functional test-performance test docs
 
 all : $(NAME)
 
@@ -187,16 +189,19 @@ re : fclean all
 
 test : test-functional test-performance
 
-test-functional : $(NAME) $(TESTFUNC_NAME)
+test-functional : $(NAME) $(PATHTESTFUNC)/$(TESTFUNC_NAME)
 	@echo "\n========= FUNCTIONAL TESTS =========\n"
-	./$(TESTFUNC_NAME) 2>/dev/null
+	$(PATHTESTFUNC)/$(TESTFUNC_NAME) 2>/dev/null
 
-test-performance : $(NAME) $(TESTPERF_NAME)
+test-performance : $(NAME) $(PATHTESTPERF)/$(TESTPERF_NAME)
 	@echo "\n========= PERFORMANCE TESTS =========\n"
-	./$(TESTPERF_NAME) 2>/dev/null
+	$(PATHTESTPERF)/$(TESTPERF_NAME) 2>/dev/null
 
 $(PATHFT)/libft.a :
 	make -C $(PATHFT)
+
+docs :
+	docs/.doxygen/42toDoxygen.sh
 
 ################################################################################
 

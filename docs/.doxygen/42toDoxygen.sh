@@ -13,7 +13,4 @@ else
 	doxygen docs/.doxygen/Doxyfile
 	find . -name "*.c" -exec perl -i -pe 's/^\/\*\*$/\/\*/' {} \;
 	find . -name "*.h" -exec perl -i -pe 's/^\/\*\*$/\/\*/' {} \;
-	make -C latex && cp latex/refman.pdf docs/documentation.pdf
-	rm -r latex
-	ln -sf documentation-html/group__ft__printf.html docs/documentation.html 
 fi

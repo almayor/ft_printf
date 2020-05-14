@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:09:50 by unite             #+#    #+#             */
-/*   Updated: 2020/03/17 07:07:39 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 00:41:08 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	buffered_puts(const char *str)
 
 	nprinted = 0;
 	i = 0;
-	while (str[i])
+	while (errno == 0 && str[i])
 	{
 		nprinted = buffered_putchar(str[i]);
 		i++;

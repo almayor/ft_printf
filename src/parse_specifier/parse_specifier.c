@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 22:02:40 by unite             #+#    #+#             */
-/*   Updated: 2020/03/31 17:32:46 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 02:06:38 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	parse_flags(t_specifier *specif, const char **format, va_list ap)
 {
 	(void)ap;
-	while (ft_chrinstr(**format, "#0- +"))
+	while (ft_strchr("#0- +", **format))
 	{
 		if (**format == '#')
 			specif->hash = 1;

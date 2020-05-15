@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/05/14 23:42:39 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/15 03:36:10 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@
 ** @return Number of characters printed or `-1` if an error occurs. Additionaly,
 ** in case of an error, `errno` is set to `ENOMEM` (memory allocation error),
 ** `EINVAL` (invalid format placeholder specification), `ENOTSUP` (type field
-** value not supported).
+** value not supported) or other values set by `write(2)` (e.g. due to an
+** invalid file descriiptor).
 */
 int	ft_vdprintf(int fd, const char *format, va_list ap)
 {

@@ -206,7 +206,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of characters printed or <code>-1</code> if an error occurs. Additionaly, in case of an error, <code>errno</code> is set to <code>ENOMEM</code> (memory allocation error), <code>EINVAL</code> (invalid format placeholder specification), <code>ENOTSUP</code> (type field value not supported). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of characters printed or <code>-1</code> if an error occurs. Additionaly, in case of an error, <code>errno</code> is set to <code>ENOMEM</code> (memory allocation error), <code>EINVAL</code> (invalid format placeholder specification), <code>ENOTSUP</code> (type field value not supported) or other values set by <code>write(2)</code>. </dd></dl>
 
 <p class="reference">References <a class="el" href="group__ft__printf.html#ga37e1ccf97573714a56ddb34f4bdbcc31">ft_vprintf()</a>.</p>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -264,7 +264,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of characters printed or <code>-1</code> if an error occurs. Additionaly, in case of an error, <code>errno</code> is set to <code>ENOMEM</code> (memory allocation error), <code>EINVAL</code> (invalid format placeholder specification), <code>ENOTSUP</code> (type field value not supported). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of characters printed or <code>-1</code> if an error occurs. Additionaly, in case of an error, <code>errno</code> is set to <code>ENOMEM</code> (memory allocation error), <code>EINVAL</code> (invalid format placeholder specification), <code>ENOTSUP</code> (type field value not supported) or other values set by <code>write(2)</code> (e.g. due to an invalid file descriiptor). </dd></dl>
 
 <p class="reference">References <a class="el" href="group__ft__printf.html#ga37e1ccf97573714a56ddb34f4bdbcc31">ft_vprintf()</a>.</p>
 <div id="dynsection-2" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -315,7 +315,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Number of characters printed or <code>-1</code> if an error occurs. Additionaly, in case of an error, <code>errno</code> is set to <code>ENOMEM</code> (memory allocation error), <code>EINVAL</code> (invalid format placeholder specification), <code>ENOTSUP</code> (type field value not supported). </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Number of characters printed or <code>-1</code> if an error occurs. Additionaly, in case of an error, <code>errno</code> is set to <code>ENOMEM</code> (memory allocation error), <code>EINVAL</code> (invalid format placeholder specification), <code>ENOTSUP</code> (type field value not supported) or other values set by <code>write(2)</code> (e.g. due to an invalid file descriiptor). </dd></dl>
 
 </div>
 </div>

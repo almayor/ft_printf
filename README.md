@@ -42,10 +42,10 @@
 
 ## Tests
 
+Run tests with `make test`
+
 * Behaviour is tested with [Unity](https://github.com/ThrowTheSwitch/Unity)
-	* `make test-behavior`
-* Performance of `ft_printf` can be benchmarked against that of `printf`
-	* `make test-speed` 
+* Performance is benchmarked against `printf(3)` 
 
 ## Acknowledgements
 

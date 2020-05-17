@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/14 20:27:20 by unite            ###   ########.fr        #
+#    Updated: 2020/05/17 03:47:52 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,10 +111,14 @@ PATHTESTPERFO = $(PATHTESTPERF)/obj
 
 ################################################################################
 
-COMPILE = gcc -c
-ARCHIVE = ar rc
-INDEX = ranlib
-LINK = gcc
+CP = /bin/cp
+RM = /bin/rm
+MKDIR = /bin/mkdir
+
+COMPILE = $(GCC) -c
+ARCHIVE = /usr/bin/ar rc
+INDEX = /usr/bin/ranlib
+LINK = $(GCC)
 
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -I$(PATHI) -I$(PATHFT)
@@ -137,12 +141,12 @@ OBJ = $(patsubst %.c, $(PATHO)/%.o, $(SRC_NAME))
 
 
 $(NAME) : $(OBJ) $(PATHFT)/libft.a
-	cp $(PATHFTA) $(NAME)
+	$(CP) $(PATHFTA) $(NAME)
 	$(ARCHIVE) $(NAME) $(OBJ)
 	$(INDEX) $(NAME)
 
 $(PATHO)/%.o : $(PATHS)/%.c
-	mkdir -p $(@D)
+	$(MKDIR) -p $(@D)
 	$(COMPILE) $(CFLAGS) $(CFLAGS_DEPEND) $(CFLAGS_OPTIMISE) $< -o $@
 
 ################################################################################
@@ -154,7 +158,7 @@ $(PATHTESTFUNC)/$(TESTFUNC_NAME) : $(NAME) $(TESTFUNCOBJ)
 	$(LINK) $^ -o $@
 
 $(PATHTESTFUNCO)/%.o : $(PATHTESTFUNCS)/%.c
-	mkdir -p $(@D)
+	$(MKDIR) -p $(@D)
 	$(COMPILE) $< -o $@ -I . -I $(PATHTESTFUNCI) $(CFLAGS_TESTFUNC)
 
 ################################################################################
@@ -166,7 +170,7 @@ $(PATHTESTPERF)/$(TESTPERF_NAME) : $(NAME) $(TESTPERFOBJ)
 	$(LINK) $^ -o $@
 
 $(PATHTESTPERFO)/%.o : $(PATHTESTPERFS)/%.c
-	mkdir -p $(@D)
+	$(MKDIR) -p $(@D)
 	$(COMPILE) $< -o $@ -I . $(CFLAGS_TESTPERF)
 
 ################################################################################
@@ -176,14 +180,14 @@ $(PATHTESTPERFO)/%.o : $(PATHTESTPERFS)/%.c
 all : $(NAME)
 
 fclean : clean
-	rm -f $(NAME)
-	make -C $(PATHFT) fclean
+	$(RM) -f $(NAME)
+	$(MAKE) -C $(PATHFT) fclean
 
 clean :
-	rm -rf $(PATHO)
-	rm -rf $(PATHTESTFUNCO) $(TESTFUNC_NAME)
-	rm -rf $(PATHTESTPERFO) $(TESTPERF_NAME)
-	make -C $(PATHFT) clean
+	$(RM) -rf $(PATHO)
+	$(RM) -rf $(PATHTESTFUNCO) $(TESTFUNC_NAME)
+	$(RM) -rf $(PATHTESTPERFO) $(TESTPERF_NAME)
+	$(MAKE) -C $(PATHFT) clean
 
 re : fclean all
 
@@ -198,7 +202,7 @@ test-performance : $(NAME) $(PATHTESTPERF)/$(TESTPERF_NAME)
 	$(PATHTESTPERF)/$(TESTPERF_NAME) 2>/dev/null
 
 $(PATHFT)/libft.a :
-	make -C $(PATHFT)
+	$(MAKE) -C $(PATHFT)
 
 docs :
 	docs/.doxygen/42toDoxygen.sh

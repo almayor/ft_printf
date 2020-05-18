@@ -5,13 +5,13 @@
 ## Overview
 
 
-* [Official instructions](resources/ft_printf.en.pdf)
+* [Official instructions](docs/subjects/ft_printf.en.pdf)
 * The goal of this project is to practice the following concepts
 	* variadic functions
 	* dispatch tables – loose coupling and performance
 	* void pointers – generic programming
 	* optimization patterns – buffering
-* The project (with the exception of tests) is consistent with the [Norme](resources/norme.en.pdf), the code standard accepted at *School 42*. In particular, this means that
+* The project (with the exception of tests) is consistent with the [Norme](docs/subjects/norme.en.pdf), the code standard accepted at *School 42*. In particular, this means that
 	* no comments inline or inside functions
 	* `for` loops and `switch` statements are forbidden
 	* each function must be maximum 25 lines

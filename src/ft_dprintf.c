@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/05/14 23:41:30 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/18 03:37:49 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** @ingroup ft_printf
 ** @brief Replicates behaviour of `dprintf(3)`.
 ** @param[in] fd File descriptor where to print output.
-** @param[in] format Format string that specifies how subsequent arguments 
+** @param[in] format Format string that specifies how subsequent arguments
 ** are converted for output
 ** @param[in] ... Variadic arguments
 ** @return Number of characters printed or `-1` if an error occurs. Additionaly,

@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/17 04:31:10 by unite            ###   ########.fr        #
+#    Updated: 2020/05/22 05:48:14 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -115,10 +115,12 @@ CC = /usr/bin/gcc
 CP = /bin/cp
 RM = /bin/rm
 MKDIR = /bin/mkdir
-
-COMPILE = $(CC) -c
 ARCHIVE = /usr/bin/ar rc
 INDEX = /usr/bin/ranlib
+
+################################################################################
+
+COMPILE = $(CC) -c
 LINK = $(CC)
 
 CFLAGS = -Wall -Wextra -Werror

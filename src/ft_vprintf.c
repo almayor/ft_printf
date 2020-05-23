@@ -6,30 +6,29 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/05/18 03:37:47 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/23 17:55:51 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_private.h"
 
-static int	formatted_print(const char **format, va_list ap)
+static void	formatted_print(const char **format, va_list ap)
 {
 	static t_specifier	specif;
 	void				*data;
 
 	data = NULL;
 	ft_memset(&specif, 0, sizeof(t_specifier));
-	(parse_specifier(&specif, format, ap) ||
-	validate_specifier(&specif) ||
-	fetch_data(&specif, &data, ap) ||
-	complete_specifier(&specif, data) ||
-	print_data(&specif, data));
+	(void)(parse_specifier(&specif, format, ap) ||
+		validate_specifier(&specif) ||
+		fetch_data(&specif, &data, ap) ||
+		complete_specifier(&specif, data) ||
+		print_data(&specif, data));
 	if (data)
 		free(data);
-	return (errno);
 }
 
-static int	colors_print(const char **format, va_list ap)
+static void	colors_print(const char **format, va_list ap)
 {
 	(void)ap;
 	if (ft_strnequ(*format, "{eoc}", 5))
@@ -47,18 +46,19 @@ static int	colors_print(const char **format, va_list ap)
 	else if (ft_strnequ(*format, "{magenta}", 9))
 		buffered_puts(KMAG);
 	else
-		return ((errno = ENOTSUP));
+	{
+		errno = ENOTSUP;
+		return ;
+	}
 	while (**format != '}')
 		*format += 1;
 	*format += 1;
-	return (errno);
 }
 
-static int	simple_print(const char **format)
+static void	simple_print(const char **format)
 {
 	buffered_putchar(**format);
 	*format += 1;
-	return (errno);
 }
 
 /*
@@ -78,7 +78,7 @@ static int	simple_print(const char **format)
 int			ft_vprintf(const char *format, va_list ap)
 {
 	size_t		nprinted;
-	static int	(*const dispatch_table[128])(const char **, va_list) = {
+	static void	(*const dispatch_table[128])(const char **, va_list) = {
 		['%'] = &formatted_print,
 		['{'] = &colors_print,
 	};

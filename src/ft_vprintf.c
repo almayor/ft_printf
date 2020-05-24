@@ -6,29 +6,31 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/05/23 17:55:51 by unite            ###   ########.fr       */
+/*   Updated: 2020/05/24 06:56:02 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_private.h"
 
-static void	formatted_print(const char **format, va_list ap)
+static int	formatted_print(const char **format, va_list ap)
 {
 	static t_specifier	specif;
 	void				*data;
+	int					rc;
 
 	data = NULL;
 	ft_memset(&specif, 0, sizeof(t_specifier));
-	(void)(parse_specifier(&specif, format, ap) ||
+	rc = parse_specifier(&specif, format, ap) ||
 		validate_specifier(&specif) ||
 		fetch_data(&specif, &data, ap) ||
 		complete_specifier(&specif, data) ||
-		print_data(&specif, data));
+		print_data(&specif, data);
 	if (data)
 		free(data);
+	return (rc);
 }
 
-static void	colors_print(const char **format, va_list ap)
+static int	colors_print(const char **format, va_list ap)
 {
 	(void)ap;
 	if (ft_strnequ(*format, "{eoc}", 5))
@@ -46,13 +48,11 @@ static void	colors_print(const char **format, va_list ap)
 	else if (ft_strnequ(*format, "{magenta}", 9))
 		buffered_puts(KMAG);
 	else
-	{
-		errno = ENOTSUP;
-		return ;
-	}
+		return ((errno = ENOTSUP));
 	while (**format != '}')
 		*format += 1;
 	*format += 1;
+	return (0);
 }
 
 static void	simple_print(const char **format)
@@ -78,7 +78,7 @@ static void	simple_print(const char **format)
 int			ft_vprintf(const char *format, va_list ap)
 {
 	size_t		nprinted;
-	static void	(*const dispatch_table[128])(const char **, va_list) = {
+	static int	(*const dispatch_table[128])(const char **, va_list) = {
 		['%'] = &formatted_print,
 		['{'] = &colors_print,
 	};
@@ -87,9 +87,7 @@ int			ft_vprintf(const char *format, va_list ap)
 	{
 		if (*format < 0 || !dispatch_table[(unsigned char)*format])
 			simple_print(&format);
-		else
-			dispatch_table[(unsigned char)*format](&format, ap);
-		if (errno)
+		else if (dispatch_table[(unsigned char)*format](&format, ap))
 		{
 			cleanup_buffer();
 			return (-1);

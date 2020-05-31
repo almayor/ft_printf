@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/22 05:48:14 by unite            ###   ########.fr        #
+#    Updated: 2020/05/31 22:07:21 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -188,8 +188,8 @@ fclean : clean
 
 clean :
 	$(RM) -rf $(PATHO)
-	$(RM) -rf $(PATHTESTFUNCO) $(TESTFUNC_NAME)
-	$(RM) -rf $(PATHTESTPERFO) $(TESTPERF_NAME)
+	$(RM) -rf $(PATHTESTFUNCO) $(PATHTESTFUNC)/$(TESTFUNC_NAME)
+	$(RM) -rf $(PATHTESTPERFO) $(PATHTESTPERF)/$(TESTPERF_NAME)
 	$(MAKE) -C $(PATHFT) clean
 
 re : fclean all

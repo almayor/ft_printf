@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/05/31 22:07:21 by unite            ###   ########.fr        #
+#    Updated: 2020/06/05 01:57:51 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,17 +111,8 @@ PATHTESTPERFO = $(PATHTESTPERF)/obj
 
 ################################################################################
 
-CC = /usr/bin/gcc
-CP = /bin/cp
-RM = /bin/rm
-MKDIR = /bin/mkdir
-ARCHIVE = /usr/bin/ar rc
-INDEX = /usr/bin/ranlib
-
-################################################################################
-
-COMPILE = $(CC) -c
-LINK = $(CC)
+COMPILE = gcc -c
+LINK = gcc
 
 CFLAGS = -Wall -Wextra -Werror
 CFLAGS += -I$(PATHI) -I$(PATHFT)
@@ -144,12 +135,12 @@ OBJ = $(patsubst %.c, $(PATHO)/%.o, $(SRC_NAME))
 
 
 $(NAME) : $(OBJ) $(PATHFT)/libft.a
-	$(CP) $(PATHFTA) $(NAME)
-	$(ARCHIVE) $(NAME) $(OBJ)
-	$(INDEX) $(NAME)
+	cp $(PATHFTA) $(NAME)
+	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 
 $(PATHO)/%.o : $(PATHS)/%.c
-	$(MKDIR) -p $(@D)
+	mkdir -p $(@D)
 	$(COMPILE) $(CFLAGS) $(CFLAGS_DEPEND) $(CFLAGS_OPTIMISE) $< -o $@
 
 ################################################################################
@@ -161,7 +152,7 @@ $(PATHTESTFUNC)/$(TESTFUNC_NAME) : $(NAME) $(TESTFUNCOBJ)
 	$(LINK) $^ -o $@
 
 $(PATHTESTFUNCO)/%.o : $(PATHTESTFUNCS)/%.c
-	$(MKDIR) -p $(@D)
+	mkdir -p $(@D)
 	$(COMPILE) $< -o $@ -I . -I $(PATHTESTFUNCI) $(CFLAGS_TESTFUNC)
 
 ################################################################################
@@ -173,7 +164,7 @@ $(PATHTESTPERF)/$(TESTPERF_NAME) : $(NAME) $(TESTPERFOBJ)
 	$(LINK) $^ -o $@
 
 $(PATHTESTPERFO)/%.o : $(PATHTESTPERFS)/%.c
-	$(MKDIR) -p $(@D)
+	mkdir -p $(@D)
 	$(COMPILE) $< -o $@ -I . $(CFLAGS_TESTPERF)
 
 ################################################################################
@@ -183,13 +174,13 @@ $(PATHTESTPERFO)/%.o : $(PATHTESTPERFS)/%.c
 all : $(NAME)
 
 fclean : clean
-	$(RM) -f $(NAME)
+	rm -f $(NAME)
 	$(MAKE) -C $(PATHFT) fclean
 
 clean :
-	$(RM) -rf $(PATHO)
-	$(RM) -rf $(PATHTESTFUNCO) $(PATHTESTFUNC)/$(TESTFUNC_NAME)
-	$(RM) -rf $(PATHTESTPERFO) $(PATHTESTPERF)/$(TESTPERF_NAME)
+	rm -rf $(PATHO)
+	rm -rf $(PATHTESTFUNCO) $(PATHTESTFUNC)/$(TESTFUNC_NAME)
+	rm -rf $(PATHTESTPERFO) $(PATHTESTPERF)/$(TESTPERF_NAME)
 	$(MAKE) -C $(PATHFT) clean
 
 re : fclean all

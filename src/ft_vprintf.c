@@ -22,9 +22,9 @@ static int	formatted_print(const char **format, va_list ap)
 	ft_memset(&specif, 0, sizeof(t_specifier));
 	rc = parse_specifier(&specif, format, ap) ||
 		validate_specifier(&specif) ||
-		fetch_data(&specif, &data, ap) ||
+		data_specifier(&specif, &data, ap) ||
 		complete_specifier(&specif, data) ||
-		print_data(&specif, data);
+		print_specifier(&specif, data);
 	if (data)
 		free(data);
 	return (rc);

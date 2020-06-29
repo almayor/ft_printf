@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/06/05 01:57:51 by unite            ###   ########.fr        #
+#    Updated: 2020/06/29 17:08:31 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,36 +18,6 @@ TESTPERF_NAME = test_performance
 ################################################################################
 
 SRC_NAME = \
-ft_printf.c \
-ft_dprintf.c \
-ft_vprintf.c \
-ft_vdprintf.c \
-
-SRC_NAME += \
-parse_specifier/parse_specifier.c
-
-SRC_NAME += \
-validate_specifier/validate_specifier.c \
-validate_specifier/functions/validate_specifier_b.c \
-validate_specifier/functions/validate_specifier_c.c \
-validate_specifier/functions/validate_specifier_f.c \
-validate_specifier/functions/validate_specifier_i.c \
-validate_specifier/functions/validate_specifier_p.c \
-validate_specifier/functions/validate_specifier_s.c \
-validate_specifier/functions/validate_specifier_u.c \
-validate_specifier/functions/validate_specifier_x.c \
-
-SRC_NAME += \
-fetch_data/fetch_data.c \
-fetch_data/functions/fetch_data_pc.c \
-fetch_data/functions/fetch_data_s.c \
-fetch_data/functions/fetch_data_f.c \
-fetch_data/functions/fetch_data_p.c \
-fetch_data/functions/fetch_data_c.c \
-fetch_data/functions/fetch_data_i.c \
-fetch_data/functions/fetch_data_u.c \
-
-SRC_NAME += \
 complete_specifier/complete_specifier.c \
 complete_specifier/functions/complete_specifier_b.c \
 complete_specifier/functions/complete_specifier_c.c \
@@ -58,30 +28,48 @@ complete_specifier/functions/complete_specifier_p.c \
 complete_specifier/functions/complete_specifier_s.c \
 complete_specifier/functions/complete_specifier_u.c \
 complete_specifier/functions/complete_specifier_x.c \
-
-SRC_NAME += \
-print_data/print_data.c \
-print_data/functions/print_data_b.c \
-print_data/functions/print_data_c.c \
-print_data/functions/print_data_f.c \
-print_data/functions/print_data_i.c \
-print_data/functions/print_data_o.c \
-print_data/functions/print_data_p.c \
-print_data/functions/print_data_s.c \
-print_data/functions/print_data_u.c \
-print_data/functions/print_data_x.c \
-print_data/functions/print_data_xx.c \
-
-SRC_NAME += \
-utils/min.c \
+data_specifier/data_specifier.c \
+data_specifier/functions/data_specifier_c.c \
+data_specifier/functions/data_specifier_f.c \
+data_specifier/functions/data_specifier_i.c \
+data_specifier/functions/data_specifier_p.c \
+data_specifier/functions/data_specifier_pc.c \
+data_specifier/functions/data_specifier_s.c \
+data_specifier/functions/data_specifier_u.c \
+ft_dprintf.c \
+ft_printf.c \
+ft_vdprintf.c \
+ft_vprintf.c \
+parse_specifier/parse_specifier.c \
+print_specifier/functions/print_specifier_b.c \
+print_specifier/functions/print_specifier_c.c \
+print_specifier/functions/print_specifier_f.c \
+print_specifier/functions/print_specifier_i.c \
+print_specifier/functions/print_specifier_o.c \
+print_specifier/functions/print_specifier_p.c \
+print_specifier/functions/print_specifier_s.c \
+print_specifier/functions/print_specifier_u.c \
+print_specifier/functions/print_specifier_x.c \
+print_specifier/functions/print_specifier_xx.c \
+print_specifier/print_specifier.c \
 utils/get_ndigits_ll.c \
 utils/get_ndigits_ull.c \
+utils/min.c \
 utils/print_digits_lf.c \
 utils/print_digits_ll.c \
 utils/print_digits_ull.c \
 utils/printing/buffered_putchar.c \
 utils/printing/buffered_putnchar.c \
 utils/printing/buffered_puts.c \
+validate_specifier/functions/validate_specifier_b.c \
+validate_specifier/functions/validate_specifier_c.c \
+validate_specifier/functions/validate_specifier_f.c \
+validate_specifier/functions/validate_specifier_i.c \
+validate_specifier/functions/validate_specifier_p.c \
+validate_specifier/functions/validate_specifier_s.c \
+validate_specifier/functions/validate_specifier_u.c \
+validate_specifier/functions/validate_specifier_x.c \
+validate_specifier/validate_specifier.c \
 
 TESTFUNCSRC_NAME = \
 main.c \

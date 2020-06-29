@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 11:31:07 by unite             #+#    #+#             */
-/*   Updated: 2020/05/13 18:43:58 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/29 17:05:38 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,48 @@ int				ft_dprintf(int fd, const char *format, ...);
 
 int				parse_specifier(t_specifier *specif, const char **format,
 								va_list ap);
+
 int				validate_specifier(t_specifier *specif);
-int				fetch_data(t_specifier *specif, void **data, va_list ap);
+int				validate_specifier_c(t_specifier *specif);
+int				validate_specifier_f(t_specifier *specif);
+int				validate_specifier_i(t_specifier *specif);
+int				validate_specifier_p(t_specifier *specif);
+int				validate_specifier_s(t_specifier *specif);
+int				validate_specifier_u(t_specifier *specif);
+int				validate_specifier_x(t_specifier *specif);
+int				validate_specifier_b(t_specifier *specif);
+
+int				data_specifier(t_specifier *specif, void **data, va_list ap);
+int				data_specifier_c(t_specifier *specif, void **data, va_list ap);
+int				data_specifier_f(t_specifier *specif, void **data, va_list ap);
+int				data_specifier_i(t_specifier *specif, void **data, va_list ap);
+int				data_specifier_p(t_specifier *specif, void **data, va_list ap);
+int				data_specifier_pc(t_specifier *specif, void **data, va_list ap);
+int				data_specifier_s(t_specifier *specif, void **data, va_list ap);
+int				data_specifier_u(t_specifier *specif, void **data, va_list ap);
+
 int				complete_specifier(t_specifier *specif, void *data);
-int				print_data(t_specifier *specif, void *data);
+int				complete_specifier_c(t_specifier *specif, void *data);
+int				complete_specifier_f(t_specifier *specif, void *data);
+int				complete_specifier_i(t_specifier *specif, void *data);
+int				complete_specifier_o(t_specifier *specif, void *data);
+int				complete_specifier_p(t_specifier *specif, void *data);
+int				complete_specifier_s(t_specifier *specif, void *data);
+int				complete_specifier_u(t_specifier *specif, void *data);
+int				complete_specifier_x(t_specifier *specif, void *data);
+int				complete_specifier_b(t_specifier *specif, void *data);
+
+int				print_specifier(t_specifier *specif, void *data);
+int				print_specifier_c(t_specifier *specif, void *data);
+int				print_specifier_f(t_specifier *specif, void *data);
+int				print_specifier_i(t_specifier *specif, void *data);
+int				print_specifier_o(t_specifier *specif, void *data);
+int				print_specifier_p(t_specifier *specif, void *data);
+int				print_specifier_s(t_specifier *specif, void *data);
+int				print_specifier_u(t_specifier *specif, void *data);
+int				print_specifier_x(t_specifier *specif, void *data);
+int				print_specifier_xx(t_specifier *specif, void *data);
+int				print_specifier_b(t_specifier *specif, void *data);
 
 /*
 ** utils

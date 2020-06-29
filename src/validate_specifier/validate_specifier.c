@@ -6,20 +6,11 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/29 16:45:00 by unite             #+#    #+#             */
-/*   Updated: 2020/05/13 18:59:08 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/29 17:05:14 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_private.h"
-
-int	validate_specifier_c(t_specifier *specif);
-int	validate_specifier_f(t_specifier *specif);
-int	validate_specifier_i(t_specifier *specif);
-int	validate_specifier_p(t_specifier *specif);
-int	validate_specifier_s(t_specifier *specif);
-int	validate_specifier_u(t_specifier *specif);
-int	validate_specifier_x(t_specifier *specif);
-int	validate_specifier_b(t_specifier *specif);
 
 int	validate_specifier(t_specifier *specif)
 {

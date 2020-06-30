@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_digits_lf.c                                  :+:      :+:    :+:   */
+/*   buffered_putlf.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/23 21:44:57 by unite             #+#    #+#             */
-/*   Updated: 2020/03/30 00:30:11 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 13:38:56 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static long long	power_ll(long long base, size_t exponent)
 	return (result);
 }
 
-int					print_digits_lf(long double num, char *radix,
+int					buffered_putlf(long double num, char *radix,
 									size_t precision, int print_dot)
 {
 	long long	factor;
@@ -37,13 +37,13 @@ int					print_digits_lf(long double num, char *radix,
 		num = num + 0.5 / factor;
 	int_part = (long long)num;
 	frc_part = (num - int_part) * factor;
-	print_digits_ll(int_part, radix);
+	buffered_putll(int_part, radix);
 	if (precision)
 	{
 		frc_ndigits = get_ndigits_ll(frc_part, ft_strlen(radix));
 		buffered_putchar('.');
 		buffered_putnchar('0', precision - frc_ndigits);
-		print_digits_ll(frc_part, radix);
+		buffered_putll(frc_part, radix);
 	}
 	else if (print_dot)
 		buffered_putchar('.');

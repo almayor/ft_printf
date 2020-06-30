@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 20:30:59 by unite             #+#    #+#             */
-/*   Updated: 2020/06/29 17:06:13 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 13:33:52 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	print_digits(t_specifier *specif, long long num, char *radix)
 {
 	if (num)
-		print_digits_ll(num, radix);
+		buffered_putll(num, radix);
 	else if (!specif->precision.isgiven || specif->precision.value)
 		buffered_putchar('0');
 	return (0);

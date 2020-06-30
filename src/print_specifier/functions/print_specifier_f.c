@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 20:30:59 by unite             #+#    #+#             */
-/*   Updated: 2020/06/29 17:06:16 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 13:34:08 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ static int	print_left_aligned(t_specifier *specif, void *data)
 	{
 		print_sign(specif, num < 0);
 		buffered_putnchar('0', specif->npad_width);
-		print_digits_lf(num, "0123456789", specif->precision.value,
+		buffered_putlf(num, "0123456789", specif->precision.value,
 						specif->hash);
 	}
 	else
 	{
 		print_sign(specif, num < 0);
-		print_digits_lf(num, "0123456789", specif->precision.value,
+		buffered_putlf(num, "0123456789", specif->precision.value,
 						specif->hash);
 		buffered_putnchar(' ', specif->npad_width);
 	}
@@ -55,14 +55,14 @@ static int	print_right_aligned(t_specifier *specif, void *data)
 	{
 		print_sign(specif, num < 0);
 		buffered_putnchar('0', specif->npad_width);
-		print_digits_lf(num, "0123456789", specif->precision.value,
+		buffered_putlf(num, "0123456789", specif->precision.value,
 						specif->hash);
 	}
 	else
 	{
 		buffered_putnchar(' ', specif->npad_width);
 		print_sign(specif, num < 0);
-		print_digits_lf(num, "0123456789", specif->precision.value,
+		buffered_putlf(num, "0123456789", specif->precision.value,
 						specif->hash);
 	}
 	return (0);

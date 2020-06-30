@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_digits_ll.c                                  :+:      :+:    :+:   */
+/*   buffered_putull.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/19 22:44:49 by unite             #+#    #+#             */
-/*   Updated: 2020/05/24 06:54:09 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 13:32:13 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_private.h"
 
-int	print_digits_ll(long long num, char *radix)
+int buffered_putull(unsigned long long num, char *radix)
 {
-	long long	base_len;
-	long long	factor;
+	size_t				base_len;
+	unsigned long long	factor;
 
 	base_len = ft_strlen(radix);
 	factor = 1;
-	while (num / factor >= base_len && num >= 0)
-		factor *= base_len;
-	while (num / factor <= -base_len && num < 0)
+	while (num / factor >= base_len)
 		factor *= base_len;
 	while (factor >= 1)
 	{
-		if (num >= 0)
-			buffered_putchar(radix[num / factor]);
-		else
-			buffered_putchar(radix[-(num / factor)]);
+		buffered_putchar(radix[num / factor]);
 		num %= factor;
 		factor /= base_len;
 	}

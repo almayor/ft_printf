@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/06/29 17:08:31 by unite            ###   ########.fr        #
+#    Updated: 2020/06/30 14:24:39 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,10 +36,16 @@ data_specifier/functions/data_specifier_p.c \
 data_specifier/functions/data_specifier_pc.c \
 data_specifier/functions/data_specifier_s.c \
 data_specifier/functions/data_specifier_u.c \
+ft_asprintf.c \
 ft_dprintf.c \
 ft_printf.c \
+ft_snprintf.c \
+ft_sprintf.c \
+ft_vasprintf.c \
 ft_vdprintf.c \
 ft_vprintf.c \
+ft_vsnprintf.c \
+ft_vsprintf.c \
 parse_specifier/parse_specifier.c \
 print_specifier/functions/print_specifier_b.c \
 print_specifier/functions/print_specifier_c.c \
@@ -55,12 +61,12 @@ print_specifier/print_specifier.c \
 utils/get_ndigits_ll.c \
 utils/get_ndigits_ull.c \
 utils/min.c \
-utils/print_digits_lf.c \
-utils/print_digits_ll.c \
-utils/print_digits_ull.c \
 utils/printing/buffered_putchar.c \
+utils/printing/buffered_putlf.c \
+utils/printing/buffered_putll.c \
 utils/printing/buffered_putnchar.c \
 utils/printing/buffered_puts.c \
+utils/printing/buffered_putull.c \
 validate_specifier/functions/validate_specifier_b.c \
 validate_specifier/functions/validate_specifier_c.c \
 validate_specifier/functions/validate_specifier_f.c \
@@ -70,6 +76,7 @@ validate_specifier/functions/validate_specifier_s.c \
 validate_specifier/functions/validate_specifier_u.c \
 validate_specifier/functions/validate_specifier_x.c \
 validate_specifier/validate_specifier.c \
+
 
 TESTFUNCSRC_NAME = \
 main.c \

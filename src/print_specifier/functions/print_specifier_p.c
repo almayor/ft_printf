@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 20:30:59 by unite             #+#    #+#             */
-/*   Updated: 2020/06/29 17:06:08 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 13:33:42 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,13 @@ static int	print_left_aligned(t_specifier *specif, void *data)
 		print_prefix(specif);
 		buffered_putnchar('0', specif->npad_precision);
 		buffered_putnchar('0', specif->npad_width);
-		print_digits_ull(num, "0123456789abcdef");
+		buffered_putull(num, "0123456789abcdef");
 	}
 	else
 	{
 		print_prefix(specif);
 		buffered_putnchar('0', specif->npad_precision);
-		print_digits_ull(num, "0123456789abcdef");
+		buffered_putull(num, "0123456789abcdef");
 		buffered_putnchar(' ', specif->npad_width);
 	}
 	return (0);
@@ -51,14 +51,14 @@ static int	print_right_aligned(t_specifier *specif, void *data)
 		print_prefix(specif);
 		buffered_putnchar('0', specif->npad_precision);
 		buffered_putnchar('0', specif->npad_width);
-		print_digits_ull(num, "0123456789abcdef");
+		buffered_putull(num, "0123456789abcdef");
 	}
 	else
 	{
 		buffered_putnchar(' ', specif->npad_width);
 		print_prefix(specif);
 		buffered_putnchar('0', specif->npad_precision);
-		print_digits_ull(num, "0123456789abcdef");
+		buffered_putull(num, "0123456789abcdef");
 	}
 	return (0);
 }

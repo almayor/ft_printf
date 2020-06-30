@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vdprintf.c                                      :+:      :+:    :+:   */
+/*   ft_asprintf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 13:36:50 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 14:29:38 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,26 @@
 
 /*
 ** @ingroup ft_printf
-** @brief Replicates behaviour of `vdprintf(3)`.
-** @param[in] fd File descriptor where to print output
+** @brief Replicates behaviour of `asprintf(3)`.
+** @param[out] ret Pointer that will be set to a buffer sufficiently large to
+** hold the formatted string. This pointer should be passed to `free(3)` to
+** release the allocated storage when it is no longer needed.
 ** @param[in] format Format string that specifies how subsequent arguments
 ** are converted for output
-** @param[in] ap A variable used by `stdarg(3)` to step through a list of
-** variadic arguments.
+** @param[in] ... Variadic arguments
 ** @return Number of characters printed or `-1` if an error occurs. Additionaly,
-** in case of an error, `errno` is set to `ENOMEM` (memory allocation error),
-** `EINVAL` (invalid format placeholder specification), `ENOTSUP` (type field
-** value not supported) or other values set by `write(2)` (e.g. due to an
-** invalid file descriiptor).
+** in case of an error, `*ret` is set to be `NULL` and errno` is set to
+** `ENOMEM` (memory allocation error), `EINVAL` (invalid format placeholder
+** specification), `ENOTSUP` (type field value not supported).
 */
 
-int	ft_vdprintf(int fd, const char *format, va_list ap)
+int	ft_asprintf(char **ret, const char *format, ...)
 {
-	int rc;
+	va_list	ap;
+	int		rc;
 
-	set_fd(fd);
-	rc = ft_vprintf(format, ap);
-	set_fd(1);
+	va_start(ap, format);
+	rc = ft_vasprintf(ret, format, ap);
+	va_end(ap);
 	return (rc);
 }

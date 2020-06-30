@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/05/24 06:56:02 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 13:42:37 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int			ft_vprintf(const char *format, va_list ap)
 	{
 		if (*format < 0 || !dispatch_table[(unsigned char)*format])
 			simple_print(&format);
-		else if (dispatch_table[(unsigned char)*format](&format, ap))
+		else if (dispatch_table[(unsigned char)*format](&format, ap) || errno)
 		{
 			cleanup_buffer();
 			return (-1);

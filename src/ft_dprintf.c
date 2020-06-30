@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/05/18 03:37:49 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/29 22:37:41 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,9 @@ int	ft_dprintf(int fd, const char *format, ...)
 {
 	va_list	ap;
 	int		rc;
-	int		fd_bk;
 
-	fd_bk = get_fd();
-	set_fd(fd);
 	va_start(ap, format);
 	rc = ft_vdprintf(fd, format, ap);
 	va_end(ap);
-	set_fd(fd_bk);
 	return (rc);
 }

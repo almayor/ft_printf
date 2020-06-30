@@ -6,71 +6,71 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 20:30:59 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 13:33:52 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 23:00:06 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_private.h"
 
-static int	print_digits(t_specifier *specif, long long num, char *radix)
+static int	print_digits(t_specifier *specif, intmax_t num, char *radix)
 {
 	if (num)
-		buffered_putll(num, radix);
-	else if (!specif->precision.isgiven || specif->precision.value)
-		buffered_putchar('0');
+		pf_putint(num, radix);
+	else if (!specif->precision.isgiven || specif->precision.val)
+		pf_putchar('0');
 	return (0);
 }
 
 static int	print_sign(t_specifier *specif, int isnegative)
 {
 	if (isnegative)
-		buffered_putchar('-');
+		pf_putchar('-');
 	else if (specif->space)
-		buffered_putchar(' ');
+		pf_putchar(' ');
 	else if (specif->plus)
-		buffered_putchar('+');
+		pf_putchar('+');
 	return (0);
 }
 
 static int	print_left_aligned(t_specifier *specif, void *data)
 {
-	long long	num;
+	intmax_t	num;
 
-	num = *(long long *)data;
+	num = *(intmax_t *)data;
 	if (specif->zero)
 	{
 		print_sign(specif, num < 0);
-		buffered_putnchar('0', specif->npad_precision);
-		buffered_putnchar('0', specif->npad_width);
+		pf_putnchar('0', specif->npad_precision);
+		pf_putnchar('0', specif->npad_width);
 		print_digits(specif, num, "0123456789");
 	}
 	else
 	{
 		print_sign(specif, num < 0);
-		buffered_putnchar('0', specif->npad_precision);
+		pf_putnchar('0', specif->npad_precision);
 		print_digits(specif, num, "0123456789");
-		buffered_putnchar(' ', specif->npad_width);
+		pf_putnchar(' ', specif->npad_width);
 	}
 	return (0);
 }
 
 static int	print_right_aligned(t_specifier *specif, void *data)
 {
-	long long	num;
+	intmax_t	num;
 
-	num = *(long long *)data;
+	num = *(intmax_t *)data;
 	if (specif->zero)
 	{
 		print_sign(specif, num < 0);
-		buffered_putnchar('0', specif->npad_precision);
-		buffered_putnchar('0', specif->npad_width);
+		pf_putnchar('0', specif->npad_precision);
+		pf_putnchar('0', specif->npad_width);
 		print_digits(specif, num, "0123456789");
 	}
 	else
 	{
-		buffered_putnchar(' ', specif->npad_width);
+		pf_putnchar(' ', specif->npad_width);
 		print_sign(specif, num < 0);
-		buffered_putnchar('0', specif->npad_precision);
+		pf_putnchar('0', specif->npad_precision);
 		print_digits(specif, num, "0123456789");
 	}
 	return (0);

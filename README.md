@@ -1,6 +1,6 @@
 # ft_printf
 
-*This project is part of the official curriculum at [School 42](https://en.wikipedia.org/wiki/42_(school)).*
+*This project is part of the official curriculum at [School 42](https://en.wikipedia.org/wiki/42_(school).*
 
 ## Overview
 
@@ -11,11 +11,18 @@
 	* dispatch tables – loose coupling and performance
 	* void pointers – generic programming
 	* optimization patterns – buffering
+* Only the following functions are allowed
+    * `write`
+    * `malloc`
+    * `free`
+    * `exit`
+    * functions of `stdarg`
 * The project (with the exception of tests) is consistent with the [Norme](docs/subjects/norme.en.pdf), the code standard accepted at *School 42*. In particular, this means that
 	* no comments inline or inside functions
 	* `for` loops and `switch` statements are forbidden
 	* each function must be maximum 25 lines
-* As per instructions, the project is realised using `libft` compiled during a previous [project](http://github.com/almayor/libft).
+	* no functional macros
+* As per instructions, the project is realised using `libft` written in a previous [project](http://github.com/almayor/libft).
 
 ## Checklist
 
@@ -36,6 +43,12 @@
 	* `ft_dprintf`
 	* `ft_vprintf`
 	* `ft_vdprintf`
+	* `ft_sprintf`
+	* `ft_snprintf`
+	* `ft_vsprintf`
+	* `ft_vsnprintf`
+	* `ft_asprintf`
+	* `ft_vasprintf`
 - [x] colors
 	* `ft_printf("{red} Color-print.{eoc} Normal print.")`
 	* red, blue, yellow, green, cyan, magenta

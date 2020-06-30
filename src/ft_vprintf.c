@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 14:44:10 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 23:11:08 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,19 @@ static int	colors_print(const char **format, va_list ap)
 {
 	(void)ap;
 	if (ft_strnequ(*format, "{eoc}", 5))
-		buffered_puts(KNRM);
+		pf_puts(KNRM);
 	else if (ft_strnequ(*format, "{cyan}", 6))
-		buffered_puts(KCYN);
+		pf_puts(KCYN);
 	else if (ft_strnequ(*format, "{red}", 5))
-		buffered_puts(KRED);
+		pf_puts(KRED);
 	else if (ft_strnequ(*format, "{green}", 7))
-		buffered_puts(KGRN);
+		pf_puts(KGRN);
 	else if (ft_strnequ(*format, "{yellow}", 8))
-		buffered_puts(KYEL);
+		pf_puts(KYEL);
 	else if (ft_strnequ(*format, "{blue}", 6))
-		buffered_puts(KBLU);
+		pf_puts(KBLU);
 	else if (ft_strnequ(*format, "{magenta}", 9))
-		buffered_puts(KMAG);
+		pf_puts(KMAG);
 	else
 		return ((errno = ENOTSUP));
 	while (**format != '}')
@@ -56,7 +56,7 @@ static int	colors_print(const char **format, va_list ap)
 
 static void	simple_print(const char **format)
 {
-	buffered_putchar(**format);
+	pf_putchar(**format);
 	*format += 1;
 }
 
@@ -82,17 +82,17 @@ int			ft_vprintf(const char *format, va_list ap)
 		['{'] = &colors_print,
 	};
 
-	while (*format)
+	while (*format && !errno)
 	{
 		if (*format < 0 || !dispatch_table[(unsigned char)*format])
 			simple_print(&format);
-		else if (dispatch_table[(unsigned char)*format](&format, ap) || errno)
+		else if (dispatch_table[(unsigned char)*format](&format, ap))
 		{
-			cleanup_buffer();
+			cleanup();
 			return (-1);
 		}
 	}
 	nprinted = flush_buffer();
-	cleanup_buffer();
+	cleanup();
 	return (nprinted);
 }

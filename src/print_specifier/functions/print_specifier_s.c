@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 20:30:59 by unite             #+#    #+#             */
-/*   Updated: 2020/06/29 17:06:05 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 19:28:07 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static size_t	get_nchars(t_specifier *specif, size_t strlen)
 {
 	if (specif->precision.isgiven &&
-		specif->precision.value < strlen)
-		return (specif->precision.value);
+		(size_t)specif->precision.val < strlen)
+		return (specif->precision.val);
 	else
 		return (strlen);
 }
@@ -33,15 +33,15 @@ int				print_specifier_s(t_specifier *specif, void *data)
 	{
 		i = 0;
 		while (i < nchars)
-			buffered_putchar(str[i++]);
-		buffered_putnchar(' ', specif->npad_width);
+			pf_putchar(str[i++]);
+		pf_putnchar(' ', specif->npad_width);
 	}
 	else
 	{
-		buffered_putnchar(' ', specif->npad_width);
+		pf_putnchar(' ', specif->npad_width);
 		i = 0;
 		while (i < nchars)
-			buffered_putchar(str[i++]);
+			pf_putchar(str[i++]);
 	}
 	return (0);
 }

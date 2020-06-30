@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/24 11:31:07 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 14:42:26 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 23:14:45 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,10 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <errno.h>
+# include <stdint.h>
 # include "libft.h"
 
-# define BUFFER_SIZE	INT_MAX
+# define BUFFER_SIZE	1024
 
 # define KNRM  "\x1B[0m"
 # define KRED  "\x1B[31m"
@@ -31,21 +32,34 @@
 # define KMAG  "\x1B[35m"
 # define KCYN  "\x1B[36m"
 
+typedef struct	s_opt
+{
+	int				val;
+	int				isgiven;
+}				t_opt;
+
 typedef enum	e_mode
 {
 	T_FILE, T_STRING
 }				t_mode;
 
+typedef union	u_dest
+{
+	int				fd;
+	char			*str;
+}				t_dest;
+
+typedef struct	s_output
+{
+	t_mode			mode;
+	t_dest			dest;
+	t_opt			max_size;
+}				t_output;
+
 typedef enum	e_length
 {
-	h, l, hh, ll, L, NONE
+	NONE, h, l, hh, ll, L, j, z
 }				t_length;
-
-typedef struct	s_optional
-{
-	size_t			value;
-	int				isgiven;
-}				t_optional;
 
 typedef struct	s_specifier
 {
@@ -54,13 +68,17 @@ typedef struct	s_specifier
 	int				space;
 	int				hash;
 	int				plus;
-	t_optional		precision;
-	t_optional		width;
+	t_opt			precision;
+	t_opt			width;
 	t_length		length;
 	unsigned char	formatid;
 	size_t			npad_precision;
 	size_t			npad_width;
 }				t_specifier;
+
+/*
+** printf family
+*/
 
 int				ft_vasprintf(char **ret, const char *format, va_list ap);
 int				ft_vdprintf(int fd, const char *format, va_list ap);
@@ -127,25 +145,24 @@ int				print_specifier_b(t_specifier *specif, void *data);
 ** printing
 */
 
-size_t			buffered_putchar(char c);
-size_t			buffered_puts(const char *str);
-size_t			buffered_putnchar(char c, size_t n);
-int				buffered_putll(long long num, char *radix);
-int				buffered_putull(unsigned long long num, char *radix);
-int				buffered_putlf(long double num, char *radix,
-								size_t precision, int print_dot);
+int				pf_putchar(char c);
+int				pf_puts(const char *str);
+int				pf_putnchar(char c, size_t n);
+int				pf_putint(intmax_t num, const char *radix);
+int				pf_putuint(uintmax_t num, const char *radix);
+int				pf_putfloat(long double num, const char *radix,
+							size_t precision, int print_dot);
 
-void			set_fd(int fd);
-void			set_output_string(char *str, size_t size);
-void			cleanup_buffer(void);
-size_t			flush_buffer(void);
+void			set_output(t_mode mode, t_dest dest, t_opt max_size);
+void			cleanup(void);
+ssize_t			flush_buffer(void);
 
 /*
 ** utils
 */
 
 size_t			min(size_t a, size_t b);
-size_t			get_ndigits_ll(long long num, size_t base_len);
-size_t			get_ndigits_ull(unsigned long long num, size_t base_len);
+size_t			get_ndigits_int(intmax_t num, size_t base_len);
+size_t			get_ndigits_uint(uintmax_t num, size_t base_len);
 
 #endif

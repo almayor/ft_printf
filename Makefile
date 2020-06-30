@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/06/30 14:24:39 by unite            ###   ########.fr        #
+#    Updated: 2020/06/30 19:34:29 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,15 +58,15 @@ print_specifier/functions/print_specifier_u.c \
 print_specifier/functions/print_specifier_x.c \
 print_specifier/functions/print_specifier_xx.c \
 print_specifier/print_specifier.c \
-utils/get_ndigits_ll.c \
-utils/get_ndigits_ull.c \
+utils/get_ndigits_int.c \
+utils/get_ndigits_uint.c \
 utils/min.c \
-utils/printing/buffered_putchar.c \
-utils/printing/buffered_putlf.c \
-utils/printing/buffered_putll.c \
-utils/printing/buffered_putnchar.c \
-utils/printing/buffered_puts.c \
-utils/printing/buffered_putull.c \
+utils/printing/pf_putchar.c \
+utils/printing/pf_putfloat.c \
+utils/printing/pf_putint.c \
+utils/printing/pf_putnchar.c \
+utils/printing/pf_puts.c \
+utils/printing/pf_putuint.c \
 validate_specifier/functions/validate_specifier_b.c \
 validate_specifier/functions/validate_specifier_c.c \
 validate_specifier/functions/validate_specifier_f.c \

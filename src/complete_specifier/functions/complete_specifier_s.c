@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:17:51 by unite             #+#    #+#             */
-/*   Updated: 2020/03/31 17:51:17 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 18:46:04 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int	complete_specifier_s(t_specifier *specif, void *data)
 		return (0);
 	str = *(char **)data;
 	if (specif->precision.isgiven)
-		nchar = min(specif->precision.value, ft_strlen(str));
+		nchar = min(specif->precision.val, ft_strlen(str));
 	else
 		nchar = ft_strlen(str);
-	specif->npad_width = specif->width.value - min(specif->width.value, nchar);
+	specif->npad_width = specif->width.val - min(specif->width.val, nchar);
 	return (0);
 }

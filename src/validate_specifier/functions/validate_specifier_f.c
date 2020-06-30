@@ -20,7 +20,7 @@ int	validate_specifier_f(t_specifier *specif)
 		specif->zero = 0;
 	if (specif->length != NONE && specif->length != l && specif->length != L)
 		return ((errno = EINVAL));
-	if (specif->precision.isgiven && specif->precision.value > 18)
+	if (specif->precision.isgiven && specif->precision.val > 18)
 		return ((errno = EINVAL));
 	return (0);
 }

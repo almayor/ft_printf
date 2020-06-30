@@ -16,13 +16,13 @@ int	print_specifier_c(t_specifier *specif, void *data)
 {
 	if (specif->minus)
 	{
-		buffered_putchar(*(char *)data);
-		buffered_putnchar(' ', specif->npad_width);
+		pf_putchar(*(char *)data);
+		pf_putnchar(' ', specif->npad_width);
 	}
 	else
 	{
-		buffered_putnchar(' ', specif->npad_width);
-		buffered_putchar(*(char *)data);
+		pf_putnchar(' ', specif->npad_width);
+		pf_putchar(*(char *)data);
 	}
 	return (0);
 }

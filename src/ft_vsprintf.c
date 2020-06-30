@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 14:31:30 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 19:26:29 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,6 @@
 
 int	ft_vsprintf(char *str, const char *format, va_list ap)
 {
-	set_output_string(str, (size_t)INT_MAX + 1);
+	set_output(T_STRING, (t_dest)str, (t_opt){0, 0});
 	return (ft_vprintf(format, ap));
 }

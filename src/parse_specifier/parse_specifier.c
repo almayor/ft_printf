@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 22:02:40 by unite             #+#    #+#             */
-/*   Updated: 2020/06/29 17:06:40 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 23:15:13 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ static void	parse_width(t_specifier *specif, const char **format, va_list ap)
 	if (**format == '*')
 	{
 		specif->width.isgiven = 1;
-		specif->width.value = (va_arg(ap, int));
+		specif->width.val = (va_arg(ap, int));
 		*format += 1;
 	}
 	else if (ft_isdigit(**format))
 	{
 		specif->width.isgiven = 1;
-		specif->width.value = ft_atoi(*format);
+		specif->width.val = ft_atoi(*format);
 		while (ft_isdigit(**format))
 			*format += 1;
 	}
@@ -57,18 +57,18 @@ static void	parse_precision(t_specifier *specif, const char **format,
 	*format += 1;
 	if (**format == '*')
 	{
-		specif->precision.value = (va_arg(ap, int));
+		specif->precision.val = (va_arg(ap, int));
 		*format += 1;
 	}
 	else if (ft_isdigit(**format))
 	{
-		specif->precision.value = ft_atoi(*format);
+		specif->precision.val = ft_atoi(*format);
 		while (ft_isdigit(**format))
 			*format += 1;
 	}
 	else
 	{
-		specif->precision.value = 0;
+		specif->precision.val = 0;
 	}
 }
 
@@ -85,9 +85,12 @@ static void	parse_length(t_specifier *specif, const char **format, va_list ap)
 		specif->length = l;
 	else if (ft_strnequ(*format, "L", 1))
 		specif->length = L;
+	else if (ft_strnequ(*format, "j", 1))
+		specif->length = j;
 	else
 		specif->length = NONE;
-	if (specif->length == h || specif->length == l || specif->length == L)
+	if (specif->length == h || specif->length == l ||
+		specif->length == L || specif->length == z)
 		*format += 1;
 	else if (specif->length == ll || specif->length == hh)
 		*format += 2;

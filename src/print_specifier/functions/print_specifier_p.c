@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 20:30:59 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 13:33:42 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 17:49:21 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,50 +15,50 @@
 static int	print_prefix(t_specifier *specif)
 {
 	(void)specif;
-	buffered_puts("0x");
+	pf_puts("0x");
 	return (0);
 }
 
 static int	print_left_aligned(t_specifier *specif, void *data)
 {
-	unsigned long long	num;
+	uintmax_t	num;
 
-	num = *(unsigned long long *)data;
+	num = *(uintmax_t *)data;
 	if (specif->zero)
 	{
 		print_prefix(specif);
-		buffered_putnchar('0', specif->npad_precision);
-		buffered_putnchar('0', specif->npad_width);
-		buffered_putull(num, "0123456789abcdef");
+		pf_putnchar('0', specif->npad_precision);
+		pf_putnchar('0', specif->npad_width);
+		pf_putuint(num, "0123456789abcdef");
 	}
 	else
 	{
 		print_prefix(specif);
-		buffered_putnchar('0', specif->npad_precision);
-		buffered_putull(num, "0123456789abcdef");
-		buffered_putnchar(' ', specif->npad_width);
+		pf_putnchar('0', specif->npad_precision);
+		pf_putuint(num, "0123456789abcdef");
+		pf_putnchar(' ', specif->npad_width);
 	}
 	return (0);
 }
 
 static int	print_right_aligned(t_specifier *specif, void *data)
 {
-	unsigned long long	num;
+	uintmax_t	num;
 
-	num = *(unsigned long long *)data;
+	num = *(uintmax_t *)data;
 	if (specif->zero)
 	{
 		print_prefix(specif);
-		buffered_putnchar('0', specif->npad_precision);
-		buffered_putnchar('0', specif->npad_width);
-		buffered_putull(num, "0123456789abcdef");
+		pf_putnchar('0', specif->npad_precision);
+		pf_putnchar('0', specif->npad_width);
+		pf_putuint(num, "0123456789abcdef");
 	}
 	else
 	{
-		buffered_putnchar(' ', specif->npad_width);
+		pf_putnchar(' ', specif->npad_width);
 		print_prefix(specif);
-		buffered_putnchar('0', specif->npad_precision);
-		buffered_putull(num, "0123456789abcdef");
+		pf_putnchar('0', specif->npad_precision);
+		pf_putuint(num, "0123456789abcdef");
 	}
 	return (0);
 }

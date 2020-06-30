@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 17:33:51 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 13:29:36 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 23:00:08 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,9 +197,9 @@ void	test_d(void)
 	test_output("4242", "%d", 4242);
 	test_output("-4242", "%d", -4242);
 	test_output("2147483647", "%d", 2147483647);
-	test_output("-2147483648", "%d", 2147483648);
+	test_output("-2147483648", "%ld", -2147483648);
 	test_output("-2147483648", "%d", -2147483648);
-	test_output("2147483647", "%d", -2147483649);
+	test_output("2147483647", "%ld", 2147483647);
 	test_output(" 42", "% d", 42);
 	test_output("-42", "% d", -42);
 	test_output("+42", "%+d", 42);
@@ -230,11 +230,11 @@ void	test_d(void)
 	test_output("-42  ", "%-5d", -42);
 	test_output("-42  ", "%-05d", -42);
 	test_output("32767", "%hd", 32767);
-	test_output("-32768", "%hd", 32768);
+	test_output("-32768", "%hd", -32768);
 	test_output("127", "%hhd", 127);
-	test_output("-128", "%hhd", 128);
+	test_output("128", "%hhd", 128);
 	test_output("-128", "%hhd", -128);
-	test_output("127", "%hhd", -129);
+	test_output("-129", "%hhd", -129);
 	test_output("2147483647", "%ld", 2147483647);
 	test_output("-2147483648", "%ld", -2147483648);
 	test_output("2147483648", "%ld", 2147483648);

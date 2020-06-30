@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:17:51 by unite             #+#    #+#             */
-/*   Updated: 2020/03/31 17:52:00 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 19:23:14 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 int	complete_specifier_u(t_specifier *specif, void *data)
 {
-	unsigned long long	num;
-	size_t				ndigits;
+	uintmax_t	num;
+	size_t		ndigits;
 
-	num = *(unsigned long long *)data;
-	ndigits = get_ndigits_ull(num, 10);
+	num = *(uintmax_t *)data;
+	ndigits = get_ndigits_uint(num, 10);
 	specif->npad_precision = 0;
 	specif->npad_width = 0;
 	if (specif->precision.isgiven)
-		specif->npad_precision = specif->precision.value -
-			min(specif->precision.value, ndigits);
+		specif->npad_precision = specif->precision.val -
+			min(specif->precision.val, ndigits);
 	if (specif->width.isgiven)
-		specif->npad_width = specif->width.value -
-			min(specif->width.value, specif->npad_precision + ndigits);
+		specif->npad_width = specif->width.val -
+			min(specif->width.val, specif->npad_precision + ndigits);
 	return (0);
 }

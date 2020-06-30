@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 13:42:37 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 14:44:10 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static int	formatted_print(const char **format, va_list ap)
 {
-	static t_specifier	specif;
-	void				*data;
-	int					rc;
+	t_specifier	specif;
+	void		*data;
+	int			rc;
 
 	data = NULL;
 	ft_memset(&specif, 0, sizeof(t_specifier));
@@ -25,8 +25,7 @@ static int	formatted_print(const char **format, va_list ap)
 		data_specifier(&specif, &data, ap) ||
 		complete_specifier(&specif, data) ||
 		print_specifier(&specif, data);
-	if (data)
-		free(data);
+	free(data);
 	return (rc);
 }
 

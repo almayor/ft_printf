@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:20:28 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 14:21:45 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 14:45:21 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
+# include <stddef.h>
 
 /*
 ** @defgroup ft_printf ft_printf() family
@@ -46,12 +47,12 @@
 int	ft_vasprintf(char **ret, const char *format, va_list ap);
 int	ft_vdprintf(int fd, const char *format, va_list ap);
 int	ft_vprintf(const char *format, va_list ap);
-int	ft_vsnprintf(char *str, size_t sizem const char *format, va_list ap);
+int	ft_vsnprintf(char *str, size_t size, const char *format, va_list ap);
 int	ft_vsprintf(char *str, const char *format, va_list ap);
 int	ft_asprintf(char **ret, const char *format, ...);
 int	ft_dprintf(int fd, const char *format, ...);
 int	ft_printf(const char *format, ...);
-int	ft_snprintf(char *str, size_t sizem const char *format, ...);
+int	ft_snprintf(char *str, size_t size, const char *format, ...);
 int	ft_sprintf(char *str, const char *format, ...);
 
 #endif

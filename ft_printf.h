@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:20:28 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 14:45:21 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 23:18:38 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** Support standard field values and combination thereof (where applicable):
 ** - flags: `#`, `0`, ` `, `-`, `+`
 ** - width and precision, including `*` options
-** - length: `hh`, `h`, `l`, `ll`, `L`
+** - length: `hh`, `h`, `l`, `ll`, `L`, `j`
 ** - type: `c`, `s`, `p`, `%`, `d`, `i`, `o`, `u`, `x`, `X`, `f`
 **
 ** Custom specifications:

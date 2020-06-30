@@ -13,7 +13,9 @@ HTML_DYNAMIC_MENUS = YES
 HTML_DYNAMIC_SECTIONS = YES
 HTML_OUTPUT = docs/documentation-html
 INLINE_SOURCES = NO
-INPUT = . src/ft_printf.c src/ft_dprintf.c src/ft_vprintf.c src/ft_vdprintf.c
+INPUT = . src/ft_printf.c src/ft_dprintf.c src/ft_vprintf.c src/ft_vdprintf.c \
+	src/ft_sprintf.c src/ft_vsprintf.c src/ft_snprintf.c src/ft_vsnprintf.c \
+	src/ft_asprintf.c src/ft_vasprintf.c
 LAYOUT_FILE = docs/.doxygen/DoxygenLayout.xml
 OPTIMIZE_OUTPUT_FOR_C = YES
 PROJECT_NAME = ft_printf

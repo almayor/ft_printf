@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 14:29:38 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 23:21:49 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** are converted for output
 ** @param[in] ... Variadic arguments
 ** @return Number of characters printed or `-1` if an error occurs. Additionaly,
-** in case of an error, `*ret` is set to be `NULL` and errno` is set to
+** in case of an error, `*ret` is set to be `NULL` and `errno` is set to
 ** `ENOMEM` (memory allocation error), `EINVAL` (invalid format placeholder
 ** specification), `ENOTSUP` (type field value not supported).
 */

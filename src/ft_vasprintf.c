@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 14:18:18 by unite            ###   ########.fr       */
+/*   Updated: 2020/06/30 23:22:52 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 ** @param[in] ap A variable used by `stdarg(3)` to step through a list of
 ** variadic arguments.
 ** @return Number of characters printed or `-1` if an error occurs. Additionaly,
-** in case of an error, `*ret` is set to be `NULL` and errno` is set to
+** in case of an error, `*ret` is set to be `NULL` and `errno` is set to
 ** `ENOMEM` (memory allocation error), `EINVAL` (invalid format placeholder
 ** specification), `ENOTSUP` (type field value not supported).
 */

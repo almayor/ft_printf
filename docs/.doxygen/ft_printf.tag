@@ -6,17 +6,17 @@
     <filename>ft__printf_8h</filename>
     <member kind="function">
       <type>int</type>
-      <name>ft_printf</name>
-      <anchorfile>group__ft__printf.html</anchorfile>
-      <anchor>ga1ee8ae8a80a7d9141ea5339af8565f2e</anchor>
-      <arglist>(const char *format,...)</arglist>
+      <name>ft_vasprintf</name>
+      <anchorfile>ft__printf_8h.html</anchorfile>
+      <anchor>ae190e5ec4fa38cda33daae6ec8846602</anchor>
+      <arglist>(char **ret, const char *format, va_list ap)</arglist>
     </member>
     <member kind="function">
       <type>int</type>
-      <name>ft_dprintf</name>
+      <name>ft_vdprintf</name>
       <anchorfile>group__ft__printf.html</anchorfile>
-      <anchor>gaa9dce60b6115aff15d563fb64e7f834b</anchor>
-      <arglist>(int fd, const char *format,...)</arglist>
+      <anchor>ga4de99b9da38b0ef28b9b93ac8f4ed987</anchor>
+      <arglist>(int fd, const char *format, va_list ap)</arglist>
     </member>
     <member kind="function">
       <type>int</type>
@@ -27,10 +27,52 @@
     </member>
     <member kind="function">
       <type>int</type>
-      <name>ft_vdprintf</name>
+      <name>ft_vsnprintf</name>
+      <anchorfile>ft__printf_8h.html</anchorfile>
+      <anchor>a7d26354c88eea48236271a3d6a57d43c</anchor>
+      <arglist>(char *str, size_t size, const char *format, va_list ap)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>ft_vsprintf</name>
+      <anchorfile>ft__printf_8h.html</anchorfile>
+      <anchor>ac25f864abfb5103b4c2ac73965a24aa0</anchor>
+      <arglist>(char *str, const char *format, va_list ap)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>ft_asprintf</name>
+      <anchorfile>ft__printf_8h.html</anchorfile>
+      <anchor>a9cf3f99af9748bb9fb5ad665869bd208</anchor>
+      <arglist>(char **ret, const char *format,...)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>ft_dprintf</name>
       <anchorfile>group__ft__printf.html</anchorfile>
-      <anchor>ga4de99b9da38b0ef28b9b93ac8f4ed987</anchor>
-      <arglist>(int fd, const char *format, va_list ap)</arglist>
+      <anchor>gaa9dce60b6115aff15d563fb64e7f834b</anchor>
+      <arglist>(int fd, const char *format,...)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>ft_printf</name>
+      <anchorfile>group__ft__printf.html</anchorfile>
+      <anchor>ga1ee8ae8a80a7d9141ea5339af8565f2e</anchor>
+      <arglist>(const char *format,...)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>ft_snprintf</name>
+      <anchorfile>ft__printf_8h.html</anchorfile>
+      <anchor>a68db9cc02f54dad4f0b1e09874383ff1</anchor>
+      <arglist>(char *str, size_t size, const char *format,...)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>ft_sprintf</name>
+      <anchorfile>ft__printf_8h.html</anchorfile>
+      <anchor>aeb09a8dca31eda5793c1315f1aabbd3c</anchor>
+      <arglist>(char *str, const char *format,...)</arglist>
     </member>
   </compound>
   <compound kind="file">

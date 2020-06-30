@@ -65,11 +65,11 @@ $(function() {
 <div class="title">ft_printf </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><em>This project is part of the official curriculum at <a href="https://en.wikipedia.org/wiki/42_(school)">School 42</a>.</em></p>
+<div class="textblock"><p><em>This project is part of the official curriculum at [School 42](<a href="https://en.wikipedia.org/wiki/42_(school)">https://en.wikipedia.org/wiki/42_(school)</a>.</em></p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Overview</h1>
 <ul>
-<li><a href="resources/ft_printf.en.pdf">Official instructions</a></li>
+<li><a href="docs/subjects/ft_printf.en.pdf">Official instructions</a></li>
 <li>The goal of this project is to practice the following concepts<ul>
 <li>variadic functions</li>
 <li>dispatch tables – loose coupling and performance</li>
@@ -77,13 +77,22 @@ Overview</h1>
 <li>optimization patterns – buffering</li>
 </ul>
 </li>
-<li>The project (with the exception of tests) is consistent with the <a href="resources/norme.en.pdf">Norme</a>, the code standard accepted at <em>School 42</em>. In particular, this means that<ul>
+<li>Only the following functions are allowed<ul>
+<li><code>write</code></li>
+<li><code>malloc</code></li>
+<li><code>free</code></li>
+<li><code>exit</code></li>
+<li>functions of <code>stdarg</code></li>
+</ul>
+</li>
+<li>The project (with the exception of tests) is consistent with the <a href="docs/subjects/norme.en.pdf">Norme</a>, the code standard accepted at <em>School 42</em>. In particular, this means that<ul>
 <li>no comments inline or inside functions</li>
 <li><code>for</code> loops and <code>switch</code> statements are forbidden</li>
 <li>each function must be maximum 25 lines</li>
+<li>no functional macros</li>
 </ul>
 </li>
-<li>As per instructions, the project is realised using <code>libft</code> compiled during a previous <a href="http://github.com/almayor/libft">project</a>.</li>
+<li>As per instructions, the project is realised using <code>libft</code> written in a previous <a href="http://github.com/almayor/libft">project</a>.</li>
 </ul>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Checklist</h1>
@@ -104,6 +113,12 @@ Checklist</h1>
 <li><code>ft_dprintf</code></li>
 <li><code>ft_vprintf</code></li>
 <li><code>ft_vdprintf</code></li>
+<li><code>ft_sprintf</code></li>
+<li><code>ft_snprintf</code></li>
+<li><code>ft_vsprintf</code></li>
+<li><code>ft_vsnprintf</code></li>
+<li><code>ft_asprintf</code></li>
+<li><code>ft_vasprintf</code></li>
 </ul>
 </li>
 <li>[x] colors<ul>
@@ -114,15 +129,10 @@ Checklist</h1>
 </ul>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Tests</h1>
+<p>Run tests with <code>make test</code></p>
 <ul>
-<li>Behaviour is tested with <a href="https://github.com/ThrowTheSwitch/Unity">Unity</a><ul>
-<li><code>make test-behavior</code></li>
-</ul>
-</li>
-<li>Performance of <code>ft_printf</code> can be benchmarked against that of <code>printf</code><ul>
-<li><code>make test-speed</code></li>
-</ul>
-</li>
+<li>Behaviour is tested with <a href="https://github.com/ThrowTheSwitch/Unity">Unity</a></li>
+<li>Performance is benchmarked against <code>printf(3)</code></li>
 </ul>
 <h1><a class="anchor" id="autotoc_md4"></a>
 Acknowledgements</h1>

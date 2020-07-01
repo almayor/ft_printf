@@ -31,7 +31,7 @@ int	ft_sprintf(char *str, const char *format, ...)
 	int		rc;
 
 	va_start(ap, format);
-	rc = ft_vsnprintf(str, INT_MAX + 1, format, ap);
+	rc = ft_vsnprintf(str, (intmax_t)INT_MAX + 1, format, ap);
 	va_end(ap);
 	return (rc);
 }

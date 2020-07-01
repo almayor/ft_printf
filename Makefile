@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/06/30 19:34:29 by unite            ###   ########.fr        #
+#    Updated: 2020/07/01 23:30:22 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,6 @@ validate_specifier/functions/validate_specifier_s.c \
 validate_specifier/functions/validate_specifier_u.c \
 validate_specifier/functions/validate_specifier_x.c \
 validate_specifier/validate_specifier.c \
-
 
 TESTFUNCSRC_NAME = \
 main.c \

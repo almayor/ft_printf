@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 19:02:14 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 23:13:15 by unite            ###   ########.fr       */
+/*   Updated: 2020/07/01 23:59:36 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ int			pf_putchar(char c)
 		if (!g_output.max_size.isgiven ||
 			(size_t)g_output.max_size.val > g_nprinted + 1)
 			g_output.dest.str[g_nprinted] = c;
+		if (g_output.max_size.isgiven &&
+			(size_t)g_output.max_size.val > g_nprinted)
+			g_output.dest.str[g_nprinted + 1] = 0;
 		g_nprinted++;
 	}
 	if (g_output.mode == T_FILE)

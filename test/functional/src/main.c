@@ -6,12 +6,13 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/04 17:33:51 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 23:00:08 by unite            ###   ########.fr       */
+/*   Updated: 2020/07/02 00:18:20 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include "unity.h"
 #include "ft_printf.h"
 
@@ -31,17 +32,27 @@ void	test_output(const char *expected, const char *format, ...)
 	char		buffer[100];
 	int 		pipefd[2];
 	va_list		ap;
+	char		*str;
 
 	va_start(ap, format);
 	pipe(pipefd);
-
 	ft_vdprintf(pipefd[1], format, ap);
 	write(pipefd[1], &zero, 1);
 	read(pipefd[0], buffer, 100);
 	TEST_ASSERT_EQUAL_STRING_MESSAGE(expected, buffer, format);
-
 	close(pipefd[0]);
 	close(pipefd[1]);
+	va_end(ap);
+
+	va_start(ap, format);
+	ft_vsprintf(buffer, format, ap);
+	TEST_ASSERT_EQUAL_STRING_MESSAGE(expected, buffer, format);
+	va_end(ap);
+
+	va_start(ap, format);
+	ft_vasprintf(&str, format, ap);
+	TEST_ASSERT_EQUAL_STRING_MESSAGE(expected, str, format);
+	free(str);
 	va_end(ap);
 }
 

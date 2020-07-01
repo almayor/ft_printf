@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 20:30:59 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 23:00:06 by unite            ###   ########.fr       */
+/*   Updated: 2020/07/01 23:20:34 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static int	print_digits(t_specifier *specif, intmax_t num, char *radix)
 {
 	if (num)
-		pf_putint(num, radix);
+		pf_putuint(num < 0 ? -num : num, radix);
 	else if (!specif->precision.isgiven || specif->precision.val)
 		pf_putchar('0');
 	return (0);

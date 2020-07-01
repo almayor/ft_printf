@@ -1,6 +1,6 @@
 # ft_printf
 
-*This project is part of the official curriculum at [School 42](https://en.wikipedia.org/wiki/42_(school).*
+*This project is part of the official curriculum at [School 42](https://en.wikipedia.org/wiki/42_(school)).*
 
 ## Overview
 

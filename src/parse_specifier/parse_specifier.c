@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/19 22:02:40 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 23:15:13 by unite            ###   ########.fr       */
+/*   Updated: 2020/07/02 02:03:31 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static void	parse_length(t_specifier *specif, const char **format, va_list ap)
 	else
 		specif->length = NONE;
 	if (specif->length == h || specif->length == l ||
-		specif->length == L || specif->length == z)
+		specif->length == L || specif->length == z || specif->length == j)
 		*format += 1;
 	else if (specif->length == ll || specif->length == hh)
 		*format += 2;

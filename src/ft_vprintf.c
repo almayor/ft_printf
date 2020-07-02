@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/20 08:17:40 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 23:11:08 by unite            ###   ########.fr       */
+/*   Updated: 2020/07/02 01:54:00 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int			ft_vprintf(const char *format, va_list ap)
 		['{'] = &colors_print,
 	};
 
-	while (*format && !errno)
+	while (*format)
 	{
 		if (*format < 0 || !dispatch_table[(unsigned char)*format])
 			simple_print(&format);

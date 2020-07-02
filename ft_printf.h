@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:20:28 by unite             #+#    #+#             */
-/*   Updated: 2020/06/30 23:18:38 by unite            ###   ########.fr       */
+/*   Updated: 2020/07/02 03:51:30 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stddef.h>
+# include <string.h>
 
 /*
 ** @defgroup ft_printf ft_printf() family

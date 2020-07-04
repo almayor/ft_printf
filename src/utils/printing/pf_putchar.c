@@ -6,14 +6,13 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 19:02:14 by unite             #+#    #+#             */
-/*   Updated: 2020/07/04 02:34:07 by unite            ###   ########.fr       */
+/*   Updated: 2020/07/04 10:51:04 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf_private.h"
-#include <stdio.h>
 
-static t_output		g_output = {T_FILE, (t_dest)1, (t_opt){0, 0}};
+static t_output		g_output = { .mode=T_FILE, .dest={1}, .max_size={0, 0} };
 static char			g_buffer[BUFFER_SIZE];
 static size_t		g_inbuffer;
 static size_t		g_nprinted;

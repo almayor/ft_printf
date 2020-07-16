@@ -22,4 +22,3 @@ PROJECT_NAME = ft_printf
 RECURSIVE = NO
 REFERENCES_RELATION = YES
 SOURCE_BROWSER = NO
-#TAGFILES = docs/.doxygen/libft.tag=https://raw.githack.com/almayor/libft/master/docs/documentation-html

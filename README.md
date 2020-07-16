@@ -6,6 +6,7 @@
 
 
 * [Official instructions](docs/subjects/ft_printf.en.pdf)
+* [Module documentation](https://almayor.github.io/ft_printf/)
 * The goal of this project is to practice the following concepts
 	* variadic functions
 	* dispatch tables – loose coupling and performance

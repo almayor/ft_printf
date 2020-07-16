@@ -6,7 +6,7 @@
 /*   By: unite <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 17:20:28 by unite             #+#    #+#             */
-/*   Updated: 2020/07/02 03:51:30 by unite            ###   ########.fr       */
+/*   Updated: 2020/07/16 04:29:27 by unite            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,9 @@
 **     - `yellow`
 **     - `blue`
 **     - `magenta`
-**     - <code> ft_printf("{red}Color-print. {eoc}Normal print."); </code><br>
-**     gives<br>
-**     <span style="font-family:monospace;"><span style="color:red;">
-**     Color-print. </span>Normal print.</span>
+**
+** @par To print in color
+** <code> ft_printf("{red}Color-print. {eoc}Normal print."); </code><br>
 **
 ** @see https://en.wikipedia.org/wiki/Printf_format_string
 ** @see https://linux.die.net/man/3/printf

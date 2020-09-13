@@ -155,7 +155,7 @@ int				pf_putfloat(long double num, const char *radix,
 
 void			set_output(t_mode mode, t_dest dest, t_opt max_size);
 void			cleanup(void);
-ssize_t			flush_buffer(void);
+size_t			flush_buffer(void);
 
 /*
 ** utils

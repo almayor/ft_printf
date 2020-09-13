@@ -6,7 +6,7 @@
 #    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/07/01 23:30:22 by unite            ###   ########.fr        #
+#    Updated: 2020/09/14 01:26:43 by unite            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -127,7 +127,6 @@ endif
 SRC = $(patsubst %.c, $(PATHS)/%.c, $(SRC_NAME))
 OBJ = $(patsubst %.c, $(PATHO)/%.o, $(SRC_NAME))
 
-
 $(NAME) : $(OBJ) $(PATHFT)/libft.a
 	cp $(PATHFTA) $(NAME)
 	ar rc $(NAME) $(OBJ)
@@ -163,9 +162,11 @@ $(PATHTESTPERFO)/%.o : $(PATHTESTPERFS)/%.c
 
 ################################################################################
 
-.PHONY : all clean fclean re test-functional test-performance test docs
+.DEFAULT_GOAL = all
 
-all : $(NAME)
+.PHONY : all clean fclean re test-functional test-performance test docs libft
+
+all : libft $(NAME)
 
 fclean : clean
 	rm -f $(NAME)
@@ -189,7 +190,7 @@ test-performance : $(NAME) $(PATHTESTPERF)/$(TESTPERF_NAME)
 	@echo "\n========= PERFORMANCE TESTS =========\n"
 	$(PATHTESTPERF)/$(TESTPERF_NAME) 2>/dev/null
 
-$(PATHFT)/libft.a :
+libft $(PATHFT)/libft.a :
 	$(MAKE) -C $(PATHFT)
 
 docs :

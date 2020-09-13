@@ -29,13 +29,13 @@ void		cleanup(void)
 	g_output = (t_output){T_FILE, (t_dest)1, (t_opt){0, 0}};
 }
 
-ssize_t		flush_buffer(void)
+size_t		flush_buffer(void)
 {
 	if (g_output.mode == T_FILE)
 		write(g_output.dest.fd, g_buffer, g_inbuffer);
 	g_nprinted += g_inbuffer;
 	g_inbuffer = 0;
-	return (errno ? -1 : (ssize_t)g_nprinted);
+	return (g_nprinted);
 }
 
 int			pf_putchar(char c)

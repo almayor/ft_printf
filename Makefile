@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: unite <marvin@42.fr>                       +#+  +:+       +#+         #
+#    By: user <user@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/26 02:09:26 by unite             #+#    #+#              #
-#    Updated: 2020/09/14 01:26:43 by unite            ###   ########.fr        #
+#    Updated: 2020/10/23 20:09:42 by user             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,7 +108,7 @@ PATHTESTPERFO = $(PATHTESTPERF)/obj
 COMPILE = gcc -c
 LINK = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -Wno-unused-result
 CFLAGS += -I$(PATHI) -I$(PATHFT)
 CFLAGS_OPTIMISE = -O3 -std=gnu11 -ffast-math -march=native
 CFLAGS_DEPEND = -MMD
